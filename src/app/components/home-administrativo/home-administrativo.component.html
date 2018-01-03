@@ -2,9 +2,9 @@
   <input id="menu-switch" type="checkbox" />
   <nav id="menu" role="navigation">          
     <ul>
-      <li><a href="#">Item 1</a></li>
-      <li><a href="#">Item 2</a></li>
-      <li><a href="#">Item 3</a></li>
+      <li><a (click) = "mainCnb = true" style="cursor:pointer">CNBMenu</a></li>
+      <li><a (click) = "mainCnb = false" style="cursor:pointer">Item 2</a></li>
+      <li><a (click) = "mainCnb = false" style="cursor:pointer">Item 3</a></li>
     </ul>
   </nav>
   <div class="page-wrap">
@@ -13,6 +13,8 @@
       <div>
         <img src="assets/img/logo.svg" class="logo">
         <h2>Administración general de canales</h2>
+        <!-- Componente menu-cnb -->
+        <app-menu-cnb *ngIf = "mainCnb"></app-menu-cnb>
       </div>
     </div>
   </div>

@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-administrativo.component.scss']
 })
 export class HomeAdministrativoComponent implements OnInit {
+  public mainCnb : boolean = false;
 
   constructor() { }
 
