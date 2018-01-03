@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdministrativeLoginComponent implements OnInit {
 
+  anio:number = new Date().getFullYear();//Obtener el año actual
+
   constructor() { }
 
   ngOnInit() {

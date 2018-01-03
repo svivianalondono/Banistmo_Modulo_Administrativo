@@ -1,9 +1,147 @@
-$blueColor: #00448D;
+$blueColor: #00448C;
 $yellowColor: #FFD200;
-$redColor: #ED1B29;
-$colorGreyDark: #333333;
-$colorGrey: #CCCCCC;
-$colorWhite: #ffffff;
+$redColor: #ED1B2D;
+$colorSilver: #9FA1A4;
+$colorGold: #B48E2E;
+$colorBlack: #231F20;
 $colorGrey2: #ccc5c52b;
-$colorGreyText: #6d6d6d;
-$colorLightGray: #EEE;
+$colorWhite: #ffffff;
+
+//Estilos para el Header del login
+.contentHeader{
+    padding-bottom:1em;
+    border-bottom: solid 1.5px;
+    color:$blueColor;
+}
+
+.loginHeader{
+    font-size: 32px;
+    margin: 5% 0 0 0;
+    width: 100%;
+}
+
+.elementHeader{
+    display: table-cell;
+    vertical-align: bottom;
+    height: 100px;
+    color:$blueColor;
+    width:1000px;
+}
+
+.textHeader{
+    font-size: 15px;
+    color:$colorSilver;
+
+    @media(min-width:412px){
+        font-size: 18px;
+    };
+    
+    @media(min-width:720px){
+        font-size: 37px;
+    };
+}
+
+.textHeaderBanistmo{
+    font-size: 27px;
+    color:$blueColor;
+
+    @media(min-width:412px){
+        font-size: 32px;
+    };
+    
+    @media(min-width:720px){
+        font-size: 50px;
+    };
+}
+
+.iconCabecera{
+    height:90px;
+    width:90px;
+    @media(min-width:412px){
+        height:115px;
+        width:115px;
+    };
+    
+    @media(min-width:720px){
+        height:150px;
+        width:150px;
+    };
+}
+
+//Estilos para el body del login
+.titleForm{
+    color: $blueColor;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 20px;
+    font-size: 100%;
+
+    @media(min-width:412px){
+        
+    };
+    
+    @media(min-width:720px){
+        
+    };
+}
+
+.labelTextLogin{
+    color: $blueColor;
+    margin-top: 10px;
+}
+
+.textInputF {
+    background-color: $colorGrey2;
+    padding: 10px;
+}
+
+.inputUser{
+    background-image: url('/assets/img/userGrey.png');
+    background-size: 20px 20px;
+    background-position: 5px;
+    background-repeat: no-repeat;
+    padding-left:10%;
+}
+
+.inputPass{
+    background-image: url('/assets/img/lockGrey.png');
+    background-size: 20px 20px;
+    background-position: 5px;
+    background-repeat: no-repeat;
+    padding-left:10%;
+}
+
+.btn-custom {
+    border:none;
+    color: $colorWhite;
+    background: url("/assets/img/fondoBoton.png");
+    width: 100%;
+    height: 67px;
+    cursor: pointer;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    /*background-color: $primaryColor;*/
+    -webkit-transition: background-image 0.5s; 
+    transition: background-image 0.5s;
+    text-align: center;
+    text-align-last: center;
+    padding: 5px;
+    margin-top: 40px;
+}
+.btn-custom:hover,
+.btn-custom:focus {
+    color:white;
+    -webkit-transition: background-image 0.5s; 
+    transition: background-image 0.5s;
+    background-image: url('/assets/img/fondoBotonAmarillo.png');
+    
+}
+
+//Estilos para el footer del login
+#footer {
+    color: $colorSilver;
+    font-size: 12px;
+    text-align: center;
+}
