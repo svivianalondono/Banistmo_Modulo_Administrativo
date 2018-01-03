@@ -1,3 +1,8 @@
+/* Modulo Administrativo Canales Banistmo
+ * En este programa se crearán todas las funcionalidades del módulo administrativo
+ * de canales, para Banistmo.
+ */
+
 import { Component } from '@angular/core';
 
 @Component({
