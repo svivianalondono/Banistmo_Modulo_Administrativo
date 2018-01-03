@@ -9,7 +9,7 @@ import { AdministrativeLoginComponent } from './components/administrative-login/
 import { MenuCnbComponent } from './components/menu-cnb/menu-cnb.component';
 
 
-const routes: Routes = [
+const appRoutes: Routes = [
   { path: 'Login', component: AdministrativeLoginComponent },
   { path: 'Home', component: HomeAdministrativoComponent },  
   { path: 'CNBMenu', component: MenuCnbComponent },  
@@ -24,7 +24,11 @@ const routes: Routes = [
     MenuCnbComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]
