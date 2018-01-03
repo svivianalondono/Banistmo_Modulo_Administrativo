@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { HomeAdministrativoComponent } from './components/home-administrativo/home-administrativo.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeAdministrativoComponent
   ],
   imports: [
     BrowserModule
