@@ -19,11 +19,11 @@
         <ul class="nav navbar-nav textBlue " *ngFor = "let dato of mainAdminArray" > 
            
           <!-- falta poner id, href -->
-          <li *ngIf = 'dato != "{" && !llave' ><a data-toggle="tab" role="tab" aria-expanded="false"> {{dato}}</a></li>
+          <li *ngIf = 'dato != "{"' ><a data-toggle="tab" role="tab" aria-expanded="false"> {{dato}}</a></li>
 
          
           <li class="dropdown" *ngIf = 'dato == "{"'>
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reportes
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{dato}}
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu textBlue ">
