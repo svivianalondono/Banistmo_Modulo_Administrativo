@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AdministrativeLoginComponent } from './components/administrative-login/administrative-login.component';
+import { AdministrativeErrorComponent } from './components/administrative-error/administrative-error.component';
 
 const routes: Routes = [
   { path: 'Login', component: AdministrativeLoginComponent },
@@ -13,7 +14,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    AdministrativeLoginComponent
+    AdministrativeLoginComponent,
+    AdministrativeErrorComponent
   ],
   imports: [
     BrowserModule

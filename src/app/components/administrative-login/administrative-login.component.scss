@@ -12,9 +12,21 @@ $colorWhite: #ffffff;
 }
 
 //Estilos para el Header del login
-// .marged{
-//     margin: 0 10% 0 10%;
-// }
+.marged{
+    
+        width: 103%;
+        margin-left: -5px;
+    
+    
+    @media(min-width:720px){
+        width: 99%;
+    };
+
+    @media(min-width:1000px){
+        width: 100%;
+    };
+    
+}
 .contentHeader{
     padding-bottom:1em;
     border-bottom: solid 1.5px;
@@ -43,7 +55,13 @@ $colorWhite: #ffffff;
     
     @media(min-width:720px){
         font-size: 37px;
-        margin-top: 100px;
+        margin-top: 12px;
+        margin-left: -51px;
+    };
+
+    @media(min-width:1000px){
+        font-size: 37px;
+        margin-top: 61px;
         margin-left: -90px;
     };
 }
@@ -131,7 +149,6 @@ $colorWhite: #ffffff;
     background-position: center;
     background-repeat: no-repeat;
     color: white;
-    /*background-color: $primaryColor;*/
     -webkit-transition: background-image 0.5s; 
     transition: background-image 0.5s;
     text-align: center;
