@@ -5,7 +5,7 @@ $colorNav: #F0F0F0;
 $colorBlue: #47525E;
 $colorRed: #EC1C2E;
 $colorTitle: #F8F8F8;
-$colorPrimary: #00458C;
+$colorPrimary: #00448C;
 
 #menu-switch {
     display:none;
@@ -20,10 +20,6 @@ $colorPrimary: #00458C;
         ~ .page-wrap {
             margin-left: 300px;
         }
-    }
-
-    &:hover{
-        color: $colorPrimary;
     }
 }
 
@@ -88,7 +84,7 @@ $colorPrimary: #00458C;
     left: 20px;
     top: 8px;
     font-size: 30px;
-    color: #ec1c2e;
+    color: $colorPrimary;
 
     &:focus {
         outline: none;
