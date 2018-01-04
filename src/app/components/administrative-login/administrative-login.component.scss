@@ -7,7 +7,14 @@ $colorBlack: #231F20;
 $colorGrey2: #ccc5c52b;
 $colorWhite: #ffffff;
 
+*{
+    font-family: 'Open Sans', sans-serif;
+}
+
 //Estilos para el Header del login
+// .marged{
+//     margin: 0 10% 0 10%;
+// }
 .contentHeader{
     padding-bottom:1em;
     border-bottom: solid 1.5px;
@@ -15,29 +22,29 @@ $colorWhite: #ffffff;
 }
 
 .loginHeader{
-    font-size: 32px;
     margin: 5% 0 0 0;
     width: 100%;
 }
 
-.elementHeader{
-    display: table-cell;
-    vertical-align: bottom;
-    height: 100px;
-    color:$blueColor;
-    width:1000px;
-}
 
 .textHeader{
     font-size: 15px;
     color:$colorSilver;
+    text-align: left;
+    margin-bottom: 0;
+    margin-top: 10px;
+    margin-left: -10px;
 
     @media(min-width:412px){
         font-size: 18px;
+        margin-top: 20px;
+        margin-left: -20px;
     };
     
     @media(min-width:720px){
         font-size: 37px;
+        margin-top: 100px;
+        margin-left: -90px;
     };
 }
 
@@ -55,16 +62,16 @@ $colorWhite: #ffffff;
 }
 
 .iconCabecera{
-    height:90px;
-    width:90px;
+    height:100%;
+    width:100%;
     @media(min-width:412px){
-        height:115px;
-        width:115px;
+        height:90%;
+        width:90%;
     };
     
     @media(min-width:720px){
-        height:150px;
-        width:150px;
+        height:70%;
+        width:70%;
     };
 }
 
@@ -73,15 +80,17 @@ $colorWhite: #ffffff;
     color: $blueColor;
     text-align: center;
     font-weight: bold;
-    padding-bottom: 20px;
-    font-size: 100%;
+    padding-bottom: 4px;
+    font-size: 17px;
 
     @media(min-width:412px){
-        
+        padding-bottom: 20px;
+        font-size: 20px;
     };
     
     @media(min-width:720px){
-        
+        padding-bottom: 20px;
+        font-size: 25px;
     };
 }
 
@@ -129,6 +138,8 @@ $colorWhite: #ffffff;
     text-align-last: center;
     padding: 5px;
     margin-top: 40px;
+    padding-top: 19px;
+    font-size: 19px;
 }
 .btn-custom:hover,
 .btn-custom:focus {
@@ -136,7 +147,7 @@ $colorWhite: #ffffff;
     -webkit-transition: background-image 0.5s; 
     transition: background-image 0.5s;
     background-image: url('/assets/img/fondoBotonAmarillo.png');
-    
+    color: $blueColor;
 }
 
 //Estilos para el footer del login
