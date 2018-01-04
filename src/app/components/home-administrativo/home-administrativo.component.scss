@@ -1,6 +1,11 @@
-$colorGrey: #FCFCFC;
+$colorGrey: #F6F6F6;
 $colorBorder: #EEE;
 $colorText: #47525E;
+$colorNav: #F0F0F0;
+$colorBlue: #47525E;
+$colorRed: #EC1C2E;
+$colorTitle: #F8F8F8;
+$colorPrimary: #00458C;
 
 #menu-switch {
     display:none;
@@ -17,14 +22,8 @@ $colorText: #47525E;
         }
     }
 
-    &:checked {
-        ~ .page-wrap {
-            #menu-toggle {
-                -webkit-transform: rotate(45deg);
-                -ms-transform: rotate(45deg);
-                transform: rotate(45deg);
-            }
-        }
+    &:hover{
+        color: $colorPrimary;
     }
 }
 
@@ -34,7 +33,7 @@ $colorText: #47525E;
     left: -300px;
     width: 300px;
     height: 100%;
-    padding: 50px 0;
+    padding: 58px 0;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -42,47 +41,28 @@ $colorText: #47525E;
     -moz-transition: all .3s ease-in;
     -o-transition: all .3s ease-in;
     transition: all .3s ease-in;
-    text-align: center;
     background-color: $colorGrey;
-    border-right: 1px solid $colorBorder;
 
     ul {
-        padding: 0;
-        margin-top: 30px;
         list-style: none;
-
-        li {
-            &:last-child {
-                a {
-                    border-bottom: 1px solid #eee;
-                }
-            }
-            a {
-                display: block;
-                font-weight: 900;
-                line-height: 50px;
-                -webkit-transition: all .3s ease;
-                -moz-transition: all .3s ease;
-                -o-transition: all .3s ease;
-                transition: all .3s ease;
-                text-decoration: none;
-                text-transform: uppercase;   
-                color: #232629;
-                border-top: 1px solid #eee;
-
-                &:hover {
-                    letter-spacing: 1px;
-                }
-            }
-        }
+        padding: 0;
     }
 
-}
+    label{
+        font-weight: normal;
+        margin: 0;
 
+        i {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+        }
+    }
+}
 
 /* MAIN PAGE */
 .page-wrap {
-    padding: 30px 50px;
+    padding: 58px 0;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -95,19 +75,20 @@ $colorText: #47525E;
 /* MENU TOGGLE ICON */
 #menu-toggle {
     display:inline-block;
-    position: relative;
-    width: 51px;
-    height: 51px;
+    position: fixed;
     cursor: pointer;
     border: none;
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
-    border-radius: 50px;
-    background: #fff;
     -webkit-transition: all .5s ease;
     -moz-transition: all .5s ease;
     -o-transition: all .5s ease;
     transition: all .5s ease;
+    z-index: 9999;
+    left: 20px;
+    top: 8px;
+    font-size: 30px;
+    color: #ec1c2e;
 
     &:focus {
         outline: none;
@@ -116,8 +97,6 @@ $colorText: #47525E;
     &:before,
     &:after {
         position: absolute;
-        content: "";
-        background-color: #232629;
     }
 
     &:before {
@@ -137,19 +116,327 @@ $colorText: #47525E;
 
 /* CONTENT CONTAINER */
 .main-content {
-    max-width: 80%;
     min-width: 200px;
     margin: 0 auto;
 
     .logo {
-        max-width: 200px;
+        max-width: 135px;
     }
 
     h2 {
-        color: $colorText;
+        color: $colorBlue;
         margin: 0;
         line-height: 50px;
         font-weight: 400;
+        font-size: 18px;
+        font-family: 'open_sanssemibold';
+    }
+
+    .brand{
+        background-color: #FDFDFD;
+        width: 299px;
+        padding: 10px 16px;
+        float: left;
+        text-align: right;
+    }
+
+    .navbar{
+        background-color: $colorNav;
+        border: 0;
+
+    }
+
+    .navbar-nav {
+        >li {
+            >a{
+                padding: 18px 15px;
+            }
+        }
+    }
+
+    .open{
+        >.dropdown-menu {
+            display: block;
+            position: absolute;
+            right: 0px;
+        }
+    }
+
+    .dropdown-menu{
+        left: auto;
+    }
+
+    .titleApp{
+        font-size: 22px;
+        padding: 15px 20px;
+        display: inline-block;
+        color: $colorBlue;
+    }
+
+    .title-module{
+        background-color: $colorTitle;
+        padding: 0 15px;
+        position: fixed;
+        width: 100%;
+    }
+
+    .custom-content{
+        width:80%;
+        margin: auto;
+
+        &.main{
+            padding-top: 90px;
+        }
     }
 }
+
+/* MULTI LEVEL MENU */
+
+.cd-accordion-menu {
+    background: #4d5158;
+    list-style: none;
+    padding: 0;
+
+    ul {
+        display: none;
+
+        a {
+            &::after{
+                left: 59px;
+            }
+        }
+
+        label,
+        a {
+            background: #F0F0F0;
+            box-shadow: inset 0 -1px #e7e7e7;
+            padding-left: 82px;
+
+        }
+
+        a{
+            &:hover{
+                text-decoration: none;
+                background-color: #ECECEC;
+            }
+        }
+
+        label{
+            &::before{
+                left: 36px;
+            }
+
+            &::after{
+                left: 59px;
+            }
+        }
+
+        ul{
+            label,
+            a {
+                padding-left: 100px;
+            }
+
+            label::before {
+                left: 54px;
+            }
+
+            label::after,
+            a::after {
+                left: 77px;
+            }
+
+            ul{
+                label,
+                a {
+                    padding-left: 118px;
+                }
+
+                label{
+                    &::before{
+                        left: 72px;
+                    }
+                }
+
+                label::after,
+                a::after {
+                    left: 95px;
+                }
+            }
+        }
+    }
+
+    li {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    input[type=checkbox] {
+        position: absolute;
+        opacity: 0;
+    }
+
+    label,
+    a {
+        position: relative;
+        display: block;
+        padding: 18px 18px 18px 64px;
+        background: $colorGrey;
+        color: $colorText; 
+        box-shadow: inset 0 -1px #EFEFEF;
+    }
+
+    label{
+        cursor: pointer;
+    }
+
+    input[type=checkbox]:checked + label::before {
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+    
+    input[type=checkbox]:checked + label::after {
+        background-position: -32px 0;
+    }
+
+    input[type=checkbox]:checked + label + ul,
+    input[type=checkbox]:checked + label:nth-of-type(n) + ul {
+        display: block;
+    }
+
+    > li {
+        > &:last-of-type{
+            > label,
+            > a {
+                box-shadow: none; 
+            }
+        }
+        > ul{
+            > li:last-of-type{
+                label,
+                a {
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+}
+
+.no-touch{
+    .cd-accordion-menu{
+        ul{
+            label,
+            a {
+                &:hover{
+                    background: #3c3f45;
+                }
+            }
+        }
+
+        label, a {
+            &:hover{
+                background: #52565d;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .cd-accordion-menu{
+        label,
+        a {
+            padding: 14px 24px 14px 20px;
+        }
+
+        label{
+            &::before{
+                left: 24px;
+            }
+
+            &::after{
+                left: 53px;
+            }
+        }
+
+        ul{
+            label,
+            a {
+                padding-left: 40px;    
+            }
+
+            label {
+                &::before{
+                    left: 48px;
+                }
+            }
+
+            label {
+                &::after{
+                    left: 77px; 
+                }
+            }
+
+            a {
+                &::after{
+                    left: 77px; 
+                }
+            }
+            ul {
+                label,
+                a {
+                    padding-left: 130px;
+                }
+
+                label {
+                    &::before{
+                        left: 72px;
+                    }
+                }
+
+                label {
+                    &::after{
+                        left: 101px;
+                    }
+                }
+
+                a {
+                    &::after{
+                        left: 101px;
+                    }
+                }
+
+                ul {
+                    label,
+                    a {
+                        padding-left: 154px;
+                    }
+
+                    label {
+                        &::before{
+                            left: 96px;
+                        }
+                    }
+
+                    label {
+                        &::after{
+                            left: 125px;
+                        }
+                    }
+
+                    a {
+                        &::after{
+                            left: 125px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 
