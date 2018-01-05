@@ -76,7 +76,7 @@ $colorPrimary: #00448C;
 }
 
 /* MENU TOGGLE ICON */
-#menu-toggle {
+#menuToggle {
     display:inline-block;
     position: fixed;
     cursor: pointer;
@@ -591,14 +591,26 @@ $colorPrimary: #00448C;
             font-size: 16px;
         }
     }
+
+    .navbar-collapse {
+        max-height: 435px;
+    }
+
+    #menu-switch {    
+        &:checked {
+            ~ .page-wrap {
+                margin-left: 0;
+            }
+        }
+    }
 }
 
 @media only screen and (max-width: 768px) {
     .brand {
         width: 230px !important;
     }
-
 }
+
 
 
 
