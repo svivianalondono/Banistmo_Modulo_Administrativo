@@ -5,63 +5,29 @@
 
       <li class="has-children">
         <input type="checkbox" name="group-1" id="group-1" checked>
-        <label for="group-1">Corresponsal no bancario
+        <label for="group-1">Canales
           <i class="fas fa-angle-down"></i>
         </label>
         <ul>
           <li class="has-children">
-            <a href="#0">Crear corresponsal</a>
-          </li>
-          <li class="has-children">
-            <a href="#0">Consultar corresponsal</a>
-          </li>
-          <li class="has-children">
-            <a href="#0">Actualizar corresponsal</a>
-          </li>
-          <li class="has-children">
-            <input type="checkbox" name="sub-group-2" id="sub-group-2">
-            <label for="sub-group-2">Creación de puntos</label>
-            <ul>
-              <li>
-                <a href="#0">Crear puntos</a>
-              </li>
-              <li>
-                <a href="#0">Actualizar puntos</a>
-              </li>
-              <li>
-                <a href="#0">Consultar puntos</a>
-              </li>
-            </ul>
+            <a href="#0">Corresponsal no Bancario</a>
           </li>
         </ul>
       </li>
 
       <li class="has-children">
         <input type="checkbox" name="group-2" id="group-2">
-        <label for="group-2">Topes</label>
+        <label for="group-2">Gestión de usuarios</label>
       </li>
 
       <li class="has-children">
         <input type="checkbox" name="group-3" id="group-3">
-        <label for="group-3">Administración de usuarios
-          <i class="fas fa-angle-down"></i>
-        </label>
-        <ul>
-          <li>
-            <a href="#0">Consultar usuario</a>
-          </li>
-          <li>
-            <a href="#0">Crear usuaruio</a>
-          </li>
-          <li>
-            <a href="#0">Actualizar usuaruio</a>
-          </li>
-        </ul>
+        <label for="group-3">Reportes</label>
       </li>
 
       <li class="has-children">
         <input type="checkbox" name="group-4" id="group-4">
-        <label for="group-4">Reportes</label>
+        <label for="group-4" class="logout">Cerrar sesión</label>
       </li>
     </ul>
   </nav>
@@ -72,6 +38,9 @@
     <div class="main-content" role="main">
       <nav class="navbar navbar-default navbar-fixed-top">
         <div class="navbar-header">
+          <div class="brand mobile">
+            <img src="assets/img/logo.svg" class="logo">
+          </div>
           <button type="button" id="botonopera" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
             aria-controls="navbar" value="hola">
             <span class="sr-only">Toggle navigation </span>
@@ -82,21 +51,44 @@
         </div>
 
         <div id="navbar" class="navbar-collapse collapse" role="tablist">
-          <div class="brand">
+          <div class="brand desktop">
             <img src="assets/img/logo.svg" class="logo">
           </div>
-          <ul class="nav navbar-nav textBlue pull-right">
+          <!--<ul class="nav navbar-nav top-menu">
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CNB
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a href="#">Crear corresponsal</a>
+                    </li>
+                    <li>
+                      <a href="#">Consultar corresponsal</a>
+                    </li>
+                    <li>
+                      <a href="#">Actualizar corresponsal</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Creación de puntos
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">Crear puntos</a>
+                            </li>
+                        </ul>
+                    </li>
+                  </ul>
+                </li>
             <li>
-              <a data-toggle="tab" id="cupoLink" role="tab" href="#cupoid" class="" aria-expanded="false">Financiera</a>
-            </li>
-            <li>
-              <a data-toggle="tab" id="transactionsLink" role="tab" href="#trans" style="color: rgb(0,64,138) ">Usuarios </a>
+              <a data-toggle="tab" id="transactionsLink" role="tab" href="#trans">Usuarios </a>
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reportes
                 <span class="caret"></span>
               </a>
-              <ul class="dropdown-menu textBlue ">
+              <ul class="dropdown-menu">
                 <li>
                   <a href="#">General</a>
                 </li>
@@ -113,8 +105,70 @@
               </ul>
             </li>
             <li>
-              <a data-toggle="tab" id="LogoutLink" role="tab" href="#logout" style="color: rgb(0,64,138) ">Cerrar Sesión </a>
+              <a data-toggle="tab" id="LogoutLink" role="tab" href="#logout">Cerrar Sesión </a>
             </li>
+          </ul>-->
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">CNB
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu multi-level">
+                <li>
+                  <a href="#">Crear corresponsal</a>
+                </li>
+                <li>
+                  <a href="#">Consultar corresponsal</a>
+                </li>
+                <li>
+                  <a href="#">Actualizar corresponsal</a>
+                </li>
+                <li class="dropdown-submenu">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Creación de puntos</a>
+                  <ul class="dropdown-menu third-level">
+                    <li>
+                      <a href="#">Crear puntos</a>
+                    </li>
+                    <li>
+                      <a href="#">Actualizar puntos</a>
+                    </li>
+                    <li>
+                      <a href="#">Consultar puntos</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Financieras
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#">Topes</a>
+                </li>
+                <li>
+                  <a href="#">Rango de centros de costos</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administración de usuarios
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#">Consultar usuario</a>
+                </li>
+                <li>
+                  <a href="#">Crear usuario</a>
+                </li>
+                <li>
+                  <a href="#">Actualizar usuario</a>
+                </li>
+              </ul>
+            </li>
+            <li><a href="#">Reportes</a></li>
           </ul>
         </div>
       </nav>
