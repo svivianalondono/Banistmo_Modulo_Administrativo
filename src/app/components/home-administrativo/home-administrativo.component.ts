@@ -6,11 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-administrativo.component.scss']
 })
 export class HomeAdministrativoComponent implements OnInit {
-  public mainCnb : boolean = false;
+  public menuCNB : boolean = false;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  mostrarMainCNB(){
+    if(this.menuCNB)
+      this.menuCNB = false;
+    else
+      this.menuCNB = true;
   }
 
 }
