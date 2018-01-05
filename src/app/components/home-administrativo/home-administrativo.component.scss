@@ -545,6 +545,12 @@ $colorPrimary: #00448C;
     .dropdown-menu {
         padding: 0;
         border: 0;
+        li{
+            a{
+                padding: 15px 35px !important;
+            }
+        }
+
         >li {
             >a {
                 padding: 15px 35px;
@@ -552,9 +558,7 @@ $colorPrimary: #00448C;
                 background-color: #fafafa;
             }
         }
-    }
 
-    .dropdown-menu{
         &.multi-level{
             li{
                 a{
@@ -593,7 +597,7 @@ $colorPrimary: #00448C;
     }
 
     .navbar-collapse {
-        max-height: 435px;
+        max-height: 500px;
     }
 
     #menu-switch {    
