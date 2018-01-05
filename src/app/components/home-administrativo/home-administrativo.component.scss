@@ -568,6 +568,7 @@ $colorPrimary: #00448C;
         }
 
         &.third-level{
+            display: block;
             li{
                 a{
                     padding: 15px 55px !important;
@@ -577,6 +578,13 @@ $colorPrimary: #00448C;
         }
     }
 
+    .dropdown-submenu{
+        >a{
+            &::after{
+                transform: rotate(90deg);
+            }
+        }
+    }
     #menu{
         width: 100%;
         z-index: 1;
