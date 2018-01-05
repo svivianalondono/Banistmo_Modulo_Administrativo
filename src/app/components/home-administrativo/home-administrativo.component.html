@@ -4,13 +4,13 @@
     <ul class="cd-accordion-menu animated">
 
       <li class="has-children">
-        <input type="checkbox" name="channels" id="channels" checked>
+        <input type="checkbox" name="channels" id="channels" >
         <label for="channels">Canales
           <i class="fas fa-angle-down"></i>
         </label>
         <ul>
           <li class="has-children">
-            <a href="#0" id="chaCNB">Corresponsal no Bancario</a>
+            <a  id="chaCNB" (click)= "mostrarMainCNB()">Corresponsal no Bancario</a>
           </li>
         </ul>
       </li>
@@ -41,8 +41,8 @@
           <div class="brand mobile">
             <img src="assets/img/logo.svg" class="logo">
           </div>
-          <button type="button" id="secondMenuToggle" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-            aria-controls="navbar" value="hola">
+          <button type="button" id="secondMenuToggle" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+            aria-expanded="false" aria-controls="navbar" value="hola">
             <span class="sr-only">Toggle navigation </span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -54,61 +54,8 @@
           <div class="brand desktop">
             <img src="assets/img/logo.svg" class="logo">
           </div>
-          <!--<ul class="nav navbar-nav top-menu">
-              <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CNB
-                    <span class="caret"></span>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a href="#">Crear corresponsal</a>
-                    </li>
-                    <li>
-                      <a href="#">Consultar corresponsal</a>
-                    </li>
-                    <li>
-                      <a href="#">Actualizar corresponsal</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Creación de puntos
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#">Crear puntos</a>
-                            </li>
-                        </ul>
-                    </li>
-                  </ul>
-                </li>
-            <li>
-              <a data-toggle="tab" id="transactionsLink" role="tab" href="#trans">Usuarios </a>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reportes
-                <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a href="#">General</a>
-                </li>
-                <li>
-                  <a href="#">Corresponsal</a>
-                </li>
-                <li>
-                  <a href="#">Puntual</a>
-                </li>
-                <li role="separator" class="divider"></li>
-                <li>
-                  <a href="#">Otro</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a data-toggle="tab" id="LogoutLink" role="tab" href="#logout">Cerrar Sesión </a>
-            </li>
-          </ul>-->
-          <ul class="nav navbar-nav">
+
+          <ul class="nav navbar-nav" *ngIf = menuCNB> <!-- inicio de menuCNB -->
             <li>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="mainCNB">CNB
                 <b class="caret"></b>
@@ -168,11 +115,13 @@
                 </li>
               </ul>
             </li>
-            <li><a href="#" id="mainReportsCNB">Reportes</a></li>
+            <li>
+              <a href="#" id="mainReportsCNB">Reportes</a>
+            </li>
           </ul>
         </div>
       </nav>
-      <div>
+      <div *ngIf = menuCNB> <!-- inicio de menuCNB -->
         <div class="title-module">
           <div class="custom-content">
             <h2>Administración de canales no bancarios</h2>
@@ -182,6 +131,7 @@
         <div class="custom-content main">
           <app-menu-cnb></app-menu-cnb>
         </div>
+        
       </div>
     </div>
   </div>
