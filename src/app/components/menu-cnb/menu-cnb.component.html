@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-<div class="container" >
-
-  <nav class="navbar navbar ">
-=======
-  <!--<nav class="navbar navbar-default ">
->>>>>>> 13ecb9e27b8718a913c8a5ec90366ae38f1c66ba
+  <nav class="navbar navbar-default ">
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" id="botonopera" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
@@ -15,41 +9,49 @@
           <span class="icon-bar"></span>
         </button>
         <p class="navbar-brand ">
-          <strong class="textBlue">Canal CNB</strong>
+          <strong class="textBlue">Banistmo</strong>
         </p>
       </div>
       
       <div id="navbar" class="navbar-collapse collapse" role="tablist">
         <ul class="nav navbar-nav textBlue " *ngFor = "let dato of mainAdminArray" > 
            
-          <!-- falta poner id, href -->
-          <li *ngIf = 'dato != "{"' ><a data-toggle="tab" role="tab" aria-expanded="false"> {{dato}}</a></li>
+           <!-- falta poner id, href  -->
+          <li *ngIf = 'validarDato(dato) != "object"' ><a data-toggle="tab" role="tab" aria-expanded="false"> no es objeto: {{dato}}</a></li>
+        
+         <div *ngIf = 'validarDato(dato) == "object"'>
+            <li class="dropdown" >
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{dato[0]}}
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu textBlue "  >
+                  <li *ngFor = "let item of dato">
+                    <!--  -->
+                    <div *ngIf = 'validarDato(item) == "object"'>
+                        <li class="dropdown" >
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{item[0]}}
+                              <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu textBlue "  >
+                              <li *ngFor = "let item2 of item">
+                                <a href="#"> {{item2}}</a>
+                              </li>                             
+                            </ul>
+                          </li>
+            
+                     </div>
+                    <!--  -->
+                    <a href="#"> {{item}}</a>
+                  </li>                             
+                </ul>
+              </li>
 
-         
-          <li class="dropdown" *ngIf = 'dato == "{"'>
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{dato}}
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu textBlue ">
-              <li>
-                <a href="#">General</a>
-              </li>
-              <li>
-                <a href="#">Corresponsal</a>
-              </li>
-              <li>
-                <a href="#">Puntual</a>
-              </li>
-              <li role="separator" class="divider"></li>
-              <li>
-                <a href="#">Otro</a>
-              </li>              
-            </ul>
-          </li>
+         </div>
+
         </ul>
       </div>
     </div>
-  </nav> -->
+  </nav> 
 <!-- img de Mostradora  -->
   <div class="text-center"> 
     <img src="assets/img/Mostradora.png" class="img-responsive  img-thumbnail">
