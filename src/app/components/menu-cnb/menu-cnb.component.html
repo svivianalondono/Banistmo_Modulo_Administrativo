@@ -1,4 +1,8 @@
+<<<<<<< HEAD
   <nav class="navbar navbar-default ">
+=======
+  <!--<nav class="navbar navbar-default ">
+>>>>>>> 6fdaaa74f54a014137bebc04a6d53225b13998d0
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" id="botonopera" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
@@ -14,8 +18,9 @@
       </div>
       
       <div id="navbar" class="navbar-collapse collapse" role="tablist">
-        <ul class="nav navbar-nav textBlue " *ngFor = "let dato of mainAdminArray" > 
+        <ul class="nav navbar-nav textBlue " *ngFor = "let dato of mainAdminArray" >
            
+<<<<<<< HEAD
            <!-- falta poner id, href  -->
           <li *ngIf = 'validarDato(dato) != "object"' ><a data-toggle="tab" role="tab" aria-expanded="false"> no es objeto: {{dato}}</a></li>
         
@@ -44,6 +49,22 @@
                     <a href="#"> {{item}}</a>
                   </li>                             
                 </ul>
+=======
+          falta poner id, href
+          <li *ngIf = 'dato != "{"' ><a data-toggle="tab" role="tab" aria-expanded="false"> {{dato}}</a></li>
+
+         
+          <li class="dropdown" *ngIf = 'dato == "{"'>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{dato}}
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu textBlue ">
+              <li>
+                <a href="#">General</a>
+              </li>
+              <li>
+                <a href="#">Corresponsal</a>
+>>>>>>> 6fdaaa74f54a014137bebc04a6d53225b13998d0
               </li>
 
          </div>
