@@ -6,6 +6,7 @@ import { LoginProviderService } from './providers/login-provider/login-provider.
 import { InterceptorProviderService } from './providers/interceptor-provider/interceptor-provider.service';//Importación del interceptor
 
 import { FormsModule } from '@angular/forms';
+import { CustomFormsModule } from 'ng2-validation';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AdministrativeLoginComponent } from './components/administrative-login/administrative-login.component';
@@ -29,7 +30,8 @@ const routes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     ),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CustomFormsModule
   ],
   providers: [
     LoginProviderService,

@@ -18,6 +18,16 @@ export class AdministrativeLoginComponent implements OnInit {
   username: string; //Varible para guardar el usuario logueado
   password: string; //Varible para guardar la contraseña del usuario logueado
   error: boolean = false; //Para controlar el mensaje de error
+  //variables para mostrar error en las clases
+  classUsername; classPassword;
+
+  //variables para mostrar error
+  errorUsername; errorPassword;
+
+  //validaciones de los campos 
+  validate = [false, false];
+
+  testName;
 
   /**
    * Método constructor
@@ -96,5 +106,52 @@ export class AdministrativeLoginComponent implements OnInit {
       this.error = true;
     }
   }
+
+  loginP(){
+    alert(
+      "prueba"
+    )
+    //this.router.navigate(['/imprimir']);
+  }
+
+
+  /**
+   * Método para validar el input de username
+   * @param input 
+   */
+  userFieldValidation(input) {
+    let inputDiv = document.getElementById("usernameAdminDiv"); //Obtener el div desde el html
+    let divClass:string = "col-xs-12 col-sm-8 col-md-6 col-lg-4 col-sm-offset-2 col-md-offset-3 col-lg-offset-4"; //Conservar la clase del div
+    //Se verifica si el campo está vacio
+    if (input.value == "undefined" || input.value == null || input.value == " ") {
+      if (input.value == null) {
+        inputDiv.className = divClass + " has-error";
+        this.errorUsername = "Por favor verifique los datos ingresados 1";
+        this.validate[0] = false;
+      } else {
+        inputDiv.className = divClass + " ";
+        this.errorUsername = "";
+        this.validate[0] = false;
+      }
+    } else {
+      if (!input.pristine) {
+        if (input.valid) {
+          this.errorUsername = "";
+          inputDiv.className = divClass + " ";
+          this.validate[0] = true;
+        } else {
+          this.errorUsername = "Por favor verifique los datos ingresados. 2";
+          inputDiv.className = divClass + " has-error";
+          this.validate[0] = false;
+        }
+      } else {
+        this.errorUsername = " Por favor verifique los datos ingresados 3";
+        inputDiv.className = divClass + " has-error";
+        this.validate[0] = false;
+      }
+    }
+    
+  }
+
 
 }
