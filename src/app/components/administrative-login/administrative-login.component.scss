@@ -167,6 +167,15 @@ $colorWhite: #ffffff;
     color: $blueColor;
 }
 
+#btn-login{
+    display:none;
+}
+
+//Estilo para el componente de error
+.errorBorder{
+    border: 2px solid white;
+}
+
 //Estilos para el footer del login
 #footer {
     color: $colorSilver;
