@@ -8,12 +8,13 @@ import { HomeAdministrativoComponent } from './components/home-administrativo/ho
 import { AdministrativeLoginComponent } from './components/administrative-login/administrative-login.component';
 import { MenuCnbComponent } from './components/menu-cnb/menu-cnb.component';
 import { AdministrativeErrorComponent } from './components/administrative-error/administrative-error.component';
+import { AdministrativeLogoutComponent } from './components/administrative-logout/administrative-logout.component';
 
 
 const appRoutes: Routes = [
   { path: 'Login', component: AdministrativeLoginComponent },
   { path: 'Home', component: HomeAdministrativoComponent },  
-  { path: 'CNBMenu', component: MenuCnbComponent },  
+  { path: 'Logout', component: AdministrativeLogoutComponent },  
   { path: '**', redirectTo: 'Login', pathMatch: 'full' }
 ];
 
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
     HomeAdministrativoComponent,
     AdministrativeLoginComponent,
     MenuCnbComponent,
-    AdministrativeErrorComponent
+    AdministrativeErrorComponent,    
+    AdministrativeLogoutComponent
 
   ],
   imports: [
