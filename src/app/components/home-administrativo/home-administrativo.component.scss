@@ -63,7 +63,7 @@ $amarilloPantone: #FFD200 ;
     }
 
     .logout{
-        font-family: 'open_sanssemibold';
+        font-weight: 600;
         font-size: 16px;
     }
 }
@@ -135,13 +135,12 @@ $amarilloPantone: #FFD200 ;
         color: $colorBlue;
         margin: 0;
         line-height: 50px;
-        font-weight: 400;
         font-size: 22px;
-        font-family: 'open_sanssemibold';
+        font-weight: 600;
     }
 
     h4 {
-        font-family: 'open_sansregular';
+        font-weight: 400;
         font-size: 16px;
     }
 
@@ -168,7 +167,7 @@ $amarilloPantone: #FFD200 ;
                 padding: 18px 20px;
                 border-bottom: 1px solid $colorBorder;
                 color: $colorPrimary;
-                font-family: 'open_sanssemibold';
+                font-weight: 600;
                 font-size: 16px;
             }
         }
