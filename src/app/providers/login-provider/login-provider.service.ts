@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'; //Importación para hacer uso del cliente http
 import { HttpParams } from '@angular/common/http/src/params';
-import { request } from 'https';
+//import { request } from 'https';
 import { Observable } from 'rxjs/Observable';
 
 /**
