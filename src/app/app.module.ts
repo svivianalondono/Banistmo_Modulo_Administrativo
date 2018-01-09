@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HomeAdministrativoComponent } from './components/home-administrativo/home-administrativo.component';
 import { AdministrativeLoginComponent } from './components/administrative-login/administrative-login.component';
 import { MenuCnbComponent } from './components/menu-cnb/menu-cnb.component';
+import { AdministrativeErrorComponent } from './components/administrative-error/administrative-error.component';
 
 
 const appRoutes: Routes = [
@@ -19,9 +20,12 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+
     HomeAdministrativoComponent,
     AdministrativeLoginComponent,
-    MenuCnbComponent
+    MenuCnbComponent,
+    AdministrativeErrorComponent
+
   ],
   imports: [
     BrowserModule,
