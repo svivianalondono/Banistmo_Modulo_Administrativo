@@ -1,0 +1,165 @@
+<div>
+  <input id="menu-switch" type="checkbox" (click)= "ocultarMenu(true)" />
+  <!-- Menu lateral -->
+  <nav id="menu" role="navigation" >    
+    <ul class="cd-accordion-menu animated">
+
+      <li class="has-children">
+        <input type="checkbox" name="channels" id="channels">
+        <label for="channels">Canales
+          <i class="fas fa-angle-down"></i>
+        </label>
+        <!-- Submenu lateral  -->
+        <ul>
+          <li class="has-children">
+            <a id="chaCNB" (click)="mostrarMain('CNB')">Corresponsal no Bancario</a>
+          </li>
+        </ul>
+        <!-- /Submenu lateral  -->
+      </li>
+
+      <li class="has-children">
+        <input type="checkbox" name="manaUser" id="manaUser">
+        <label for="manaUser">Gestión de usuarios</label>
+      </li>
+
+      <li class="has-children">
+        <input type="checkbox" name="reports" id="reports">
+        <label for="reports">Reportes</label>
+      </li>
+
+      <li class="has-children">
+        <input type="checkbox" name="logout" id="logout">
+        <label for="logout" class="logout">Cerrar sesión</label>
+      </li>
+       
+    </ul>
+  </nav>
+  <!-- /Menu lateral -->
+
+  <div class="page-wrap">
+    <label for="menu-switch" id="menuToggle" >
+      <i class="fas fa-bars"></i>
+    </label>
+    <!-- Menu superor -->
+    <div class="main-content" role="main">
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <!-- Menu en reponsive -->
+        <div class="navbar-header">
+          <!-- logo en reponsive -->
+          <div class="brand mobile">
+            <img src="assets/img/logo.svg" class="logo" (click)="mostrarMain('home')" style="cursor: pointer">
+          </div>
+
+          <!-- button  reponsive -->
+          <button type="button" id="secondMenuToggle" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+            aria-expanded="false" aria-controls="navbar" *ngIf = !home  (click)= "ocultarMenu(false)">
+            <span class="sr-only">Toggle navigation </span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        
+        <div id="navbar" class="navbar-collapse collapse" role="tablist">
+          <div class="brand desktop">
+            <img src="assets/img/logo.svg" class="logo" (click)="mostrarMain('home')" style="cursor: pointer">
+          </div>
+
+          <!-- inicio de menuCNB -->
+          <ul class="nav navbar-nav" *ngIf = menuCNB>            
+            <li>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="mainCNB">CNB
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu multi-level">
+                <li>
+                  <a href="#" id="newCNB">Crear corresponsal</a>
+                </li>
+                <li>
+                  <a href="#" id="queryCNB">Consultar corresponsal</a>
+                </li>
+                <li>
+                  <a href="#" id="updateCNB">Actualizar corresponsal</a>
+                </li>
+                <li class="dropdown-submenu">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="createPointCNB">Creación de puntos</a>
+                  <ul class="dropdown-menu third-level">
+                    <li>
+                      <a href="#" id="newPointCNB">Crear puntos</a>
+                    </li>
+                    <li>
+                      <a href="#" id="updatePointCNB">Actualizar puntos</a>
+                    </li>
+                    <li>
+                      <a href="#" id="queryPointCNB">Consultar puntos</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="mainFinancialCNB">Financieras
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#" id="financialLimitsCNB">Topes</a>
+                </li>
+                <li>
+                  <a href="#" id="rangeCostCenterCNB">Rango de centros de costos</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="mainAdminUserCNB">Administración de usuarios
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#" id="queryUserCNB">Consultar usuario</a>
+                </li>
+                <li>
+                  <a href="#" id="newUserCNB">Crear usuario</a>
+                </li>
+                <li>
+                  <a href="#" id="updateUserCNB">Actualizar usuario</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#" id="mainReportsCNB">Reportes</a>
+            </li>
+          </ul>
+          <!-- /inicio de menuCNB -->
+        </div>
+      </nav>      
+
+      <!-- body de Home  -->
+      <div class="custom-content" *ngIf = home>
+        <div class="title-module">
+          <img src="assets/img/logo.svg" class="logo-home">
+          <h2>Administración general de canales</h2>
+        </div>
+        <hr>
+        <div class="secondary-content" >   
+          <h4 class=".font">Imagen estándar del módulo de administración...</h4>
+          <div *ngFor = "let dato of Separar" >
+            <br>
+          </div>
+          <h4 class=".font">Últimas noticias...</h4>
+          <div *ngFor = "let dato of Separar" >
+            <br>
+          </div>
+          <h4 class=".font">Notificaciones...</h4>
+        </div>
+      </div>
+
+
+      <!--/body de Home  -->
+      <!-- menuCNB -->
+      <app-menu-cnb *ngIf = menuCNB></app-menu-cnb>
+    </div>
+    <!-- /Menu superor -->
+  </div>
+</div>
