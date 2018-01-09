@@ -1,18 +1,21 @@
 <div>
-  <input id="menu-switch" type="checkbox" />
-  <nav id="menu" role="navigation">
+  <input id="menu-switch" type="checkbox" (click)= "ocultarMenu(true)" />
+  <!-- Menu lateral -->
+  <nav id="menu" role="navigation" >    
     <ul class="cd-accordion-menu animated">
 
       <li class="has-children">
-        <input type="checkbox" name="channels" id="channels" >
+        <input type="checkbox" name="channels" id="channels">
         <label for="channels">Canales
           <i class="fas fa-angle-down"></i>
         </label>
+        <!-- Submenu lateral  -->
         <ul>
           <li class="has-children">
-            <a  id="chaCNB" (click)= "mostrarMain('CNB')">Corresponsal no Bancario</a>
+            <a id="chaCNB" (click)="mostrarMain('CNB')">Corresponsal no Bancario</a>
           </li>
         </ul>
+        <!-- /Submenu lateral  -->
       </li>
 
       <li class="has-children">
@@ -29,33 +32,42 @@
         <input type="checkbox" name="logout" id="logout">
         <label for="logout" class="logout">Cerrar sesión</label>
       </li>
+       
     </ul>
   </nav>
+  <!-- /Menu lateral -->
+
   <div class="page-wrap">
-    <label for="menu-switch" id="menuToggle">
+    <label for="menu-switch" id="menuToggle" >
       <i class="fas fa-bars"></i>
-    </label>    
+    </label>
+    <!-- Menu superor -->
     <div class="main-content" role="main">
       <nav class="navbar navbar-default navbar-fixed-top">
+        <!-- Menu en reponsive -->
         <div class="navbar-header">
+          <!-- logo en reponsive -->
           <div class="brand mobile">
-            <img src="assets/img/logo.svg" class="logo" >
+            <img src="assets/img/logo.svg" class="logo" (click)="mostrarMain('home')" style="cursor: pointer">
           </div>
+
+          <!-- button  reponsive -->
           <button type="button" id="secondMenuToggle" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-            aria-expanded="false" aria-controls="navbar" value="hola">
+            aria-expanded="false" aria-controls="navbar" *ngIf = !home  (click)= "ocultarMenu(false)">
             <span class="sr-only">Toggle navigation </span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
         </div>
-
+        
         <div id="navbar" class="navbar-collapse collapse" role="tablist">
           <div class="brand desktop">
-            <img src="assets/img/logo.svg" class="logo"  (click)= "mostrarMain('home')" style="cursor: pointer">
+            <img src="assets/img/logo.svg" class="logo" (click)="mostrarMain('home')" style="cursor: pointer">
           </div>
 
-          <ul class="nav navbar-nav" *ngIf = menuCNB> <!-- inicio de menuCNB -->
+          <!-- inicio de menuCNB -->
+          <ul class="nav navbar-nav" *ngIf = menuCNB>            
             <li>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="mainCNB">CNB
                 <b class="caret"></b>
@@ -119,41 +131,46 @@
               <a href="#" id="mainReportsCNB">Reportes</a>
             </li>
           </ul>
+          <!-- /inicio de menuCNB -->
         </div>
-      </nav>
-      <div *ngIf = menuCNB> <!-- inicio de menuCNB -->
-        <!-- le quitamos la clase class="title-module" -->
-        <div >
-          <div class="custom-content">
-            <h1><strong> Administración de canales no bancarios </strong></h1> 
-            <div class="row marged" style="padding-bottom:1em;border-bottom: solid 1.5px  #FFD200;"> </div>
-          </div>
-        </div>
-        <!-- Componente menu-cnb -->
-        <div class="custom-content main">
-          <app-menu-cnb></app-menu-cnb>
-        </div>
-        
-      </div>
+      </nav>      
+
+      <!-- menuCNB -->
+      <app-menu-cnb *ngIf = menuCNB></app-menu-cnb>
 
 
       <!-- body de Home  -->
-      <div class="container" *ngIf = home >
-        <div class="row"><br>
-            <div class="col-md-offset-9" >
-                <img src="assets/img/logo.svg" style="width: 100%">                
-            </div>
-            <div class="col-md-12">
-                <h1><strong> Administración General de Canales</strong> </h1>
-            </div>
-            <div class="col-md-12">              
-              <div class="row marged" style="padding-bottom:1em;border-bottom: solid 1.5px  #FFD200;"> </div>
-            </div>
+      <div class="container" *ngIf = home>
+        <div class="row">
+          <br>
+          <div class="col-xs-offset-7 col-ms-offset-8 col-md-offset-9" >
+            <img src="assets/img/logo.svg" class="img-responsive" style="width: 100%">
+          </div>
+          <div class="col-md-12">
+            <h1><strong class="fontSizeTitle">  Administración General de Canales</strong></h1>
+          </div>          
+          <div class="row marged lineYellow" > </div>
+          
         </div>
-        
+        <br>
+        <div class="container linegray" >   
+          <h4 class=".font fontSizeContent">Imagen estandar del modulo de administración...</h4>
+          <div *ngFor = "let dato of Separar" >
+            <br>
+          </div>
+          <h4 class=".font fontSizeContent">Ultimas noticias...</h4>
+          <div *ngFor = "let dato of Separar" >
+            <br>
+          </div>
+          <h4 class=".font fontSizeContent">Notificaciones...</h4>
+        </div>
+
       </div>
-       <!--/body de Home  -->
-     
+
+
+      <!--/body de Home  -->
+
     </div>
+    <!-- /Menu superor -->
   </div>
 </div>

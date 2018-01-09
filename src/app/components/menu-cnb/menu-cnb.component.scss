@@ -1,5 +1,37 @@
+$break-small: 420px;
+$break-large: 740px;
 
+.linegray{
+  border: solid 1.5px  #CCCCCC;
+} 
+.lineYellow{
+  padding-bottom:1em;
+  border-bottom: solid 1.5px  #FFD200;
+}
 
+.fontSizeTitle {
+  font-size: 20px;  
+
+  @media(min-width: $break-small) {
+    font-size: 26px;    
+  }
+
+  @media(min-width: $break-large) {
+    font-size: 38px;    
+  }
+}
+
+.fontSizeContent {
+  font-size: 14px;  
+
+ @media(min-width: $break-small) {
+    font-size: 18px;    
+  }
+
+  @media(min-width: $break-large) {
+    font-size: 24px;    
+  }
+}
 
 
 

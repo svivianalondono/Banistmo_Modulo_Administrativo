@@ -1,3 +1,5 @@
+@import "../menu-cnb/menu-cnb.component";
+
 $colorGrey: #F6F6F6;
 $colorBorder: #EEE;
 $colorText: #47525E;
@@ -6,6 +8,7 @@ $colorBlue: #47525E;
 $colorRed: #EC1C2E;
 $colorTitle: #F8F8F8;
 $colorPrimary: #00448C;
+
 
 #menu-switch {
     display:none;
