@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu-cnb.component.scss']
 })
 export class MenuCnbComponent implements OnInit {
-  
+  public title: string = 'Administración de canales no bancarios';
 
 
   constructor() {  

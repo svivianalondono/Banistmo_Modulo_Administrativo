@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class HomeAdministrativoComponent implements OnInit {
   public menuCNB : boolean = false; //valida que las opciones del menu navbar del canal CNB se muestr o no.
   public home : boolean = true; //valida que las opciones del home se muestre o no.
-  public switMenu = [false,false];//valida que los 2 menus no se solapen. 
+  public switMenu = [false,false]; //valida que los 2 menus no se solapen. 
+  public title: string = 'Administración general de canales';
   
   // variable temporal para separar
   Separar= ["","","","","","",""]

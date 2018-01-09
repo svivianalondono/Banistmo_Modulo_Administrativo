@@ -1,6 +1,8 @@
 @import "../menu-cnb/menu-cnb.component";
 
-$colorGrey: #F6F6F6;
+$colorGray: #F6F6F6;
+$secondarycolorGray: #FDFDFD;
+$tertiarycolorGray: #EDEDED;
 $colorBorder: #EEE;
 $colorText: #47525E;
 $colorNav: #F0F0F0;
@@ -8,7 +10,7 @@ $colorBlue: #47525E;
 $colorRed: #EC1C2E;
 $colorTitle: #F8F8F8;
 $colorPrimary: #00448C;
-
+$amarilloPantone: #FFD200 ;
 
 #menu-switch {
     display:none;
@@ -40,7 +42,7 @@ $colorPrimary: #00448C;
     -moz-transition: all .3s ease-in;
     -o-transition: all .3s ease-in;
     transition: all .3s ease-in;
-    background-color: $colorGrey;
+    background-color: $colorGray;
     overflow: auto;
 
     ul {
@@ -134,12 +136,17 @@ $colorPrimary: #00448C;
         margin: 0;
         line-height: 50px;
         font-weight: 400;
-        font-size: 18px;
+        font-size: 22px;
         font-family: 'open_sanssemibold';
     }
 
+    h4 {
+        font-family: 'open_sansregular';
+        font-size: 16px;
+    }
+
     .brand{
-        background-color: #FDFDFD;
+        background-color: $secondarycolorGray;
         width: 299px;
         padding: 10px 16px;
         float: left;
@@ -159,7 +166,7 @@ $colorPrimary: #00448C;
         >li {
             >a{
                 padding: 18px 20px;
-                border-bottom: 1px solid #EEE;
+                border-bottom: 1px solid $colorBorder;
                 color: $colorPrimary;
                 font-family: 'open_sanssemibold';
                 font-size: 16px;
@@ -178,13 +185,6 @@ $colorPrimary: #00448C;
         color: $colorBlue;
     }
 
-    .title-module{
-        background-color: $colorTitle;
-        padding: 0 15px;
-        position: fixed;
-        width: 100%;
-    }
-
     .custom-content{
         width:80%;
         margin: auto;
@@ -192,11 +192,16 @@ $colorPrimary: #00448C;
         &.main{
             padding-top: 90px;
         }
+
+        hr{
+           margin: 0 0 40px 0;
+           border: 1px solid $amarilloPantone; 
+        }
     }
 
     .navbar-collapse{
         border: 0;
-        background-color: #EDEDED;
+        background-color: $tertiarycolorGray;
     }
 
     .dropdown-toggle{
@@ -212,12 +217,25 @@ $colorPrimary: #00448C;
             }
         }
     }
+
+    .title-module{
+        text-align: right;
+        margin-top: 20px;
+    }
+
+    .logo-home{
+        width: 160px;
+    }
+    
+    .secondary-content{
+        border: 1px solid $tertiarycolorGray;
+        padding: 20px;
+    }
 }
 
 /* MULTI LEVEL MENU */
 
 .cd-accordion-menu {
-    background: #4d5158;
     list-style: none;
     padding: 0;
 
@@ -234,7 +252,7 @@ $colorPrimary: #00448C;
         a {
             background: #F0F0F0;
             box-shadow: inset 0 -1px #e7e7e7;
-            padding-left: 82px;
+            padding-left: 40px;
 
         }
 
@@ -306,8 +324,8 @@ $colorPrimary: #00448C;
     a {
         position: relative;
         display: block;
-        padding: 18px 18px 18px 64px;
-        background: $colorGrey;
+        padding: 18px 18px 18px 20px;
+        background: $colorGray;
         color: $colorText; 
         box-shadow: inset 0 -1px #EFEFEF;
     }
@@ -346,25 +364,6 @@ $colorPrimary: #00448C;
                 a {
                     box-shadow: none;
                 }
-            }
-        }
-    }
-}
-
-.no-touch{
-    .cd-accordion-menu{
-        ul{
-            label,
-            a {
-                &:hover{
-                    background: #3c3f45;
-                }
-            }
-        }
-
-        label, a {
-            &:hover{
-                background: #52565d;
             }
         }
     }
@@ -575,7 +574,7 @@ $colorPrimary: #00448C;
             li{
                 a{
                     padding: 15px 55px !important;
-                    background-color: #FDFDFD;
+                    background-color: $secondarycolorGray;
                 }
             }
         }
@@ -596,15 +595,9 @@ $colorPrimary: #00448C;
     }
 
     .custom-content{
-        width: 97% !important;
+        width: 92% !important;
         &.main{
             padding: 0 15px;
-        }
-    }
-
-    .title-module{
-        h2{
-            font-size: 16px;
         }
     }
 

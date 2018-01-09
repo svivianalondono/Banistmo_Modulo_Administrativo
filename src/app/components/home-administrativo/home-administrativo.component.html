@@ -135,41 +135,30 @@
         </div>
       </nav>      
 
-      <!-- menuCNB -->
-      <app-menu-cnb *ngIf = menuCNB></app-menu-cnb>
-
-
       <!-- body de Home  -->
-      <div class="container" *ngIf = home>
-        <div class="row">
-          <br>
-          <div class="col-xs-offset-7 col-ms-offset-8 col-md-offset-9" >
-            <img src="assets/img/logo.svg" class="img-responsive" style="width: 100%">
-          </div>
-          <div class="col-md-12">
-            <h1><strong class="fontSizeTitle">  Administración General de Canales</strong></h1>
-          </div>          
-          <div class="row marged lineYellow" > </div>
-          
+      <div class="custom-content" *ngIf = home>
+        <div class="title-module">
+          <img src="assets/img/logo.svg" class="logo-home">
+          <h2>{{title}}</h2>
         </div>
-        <br>
-        <div class="container linegray" >   
-          <h4 class=".font fontSizeContent">Imagen estandar del modulo de administración...</h4>
+        <hr>
+        <div class="secondary-content" >   
+          <h4 class=".font">Imagen estándar del módulo de administración...</h4>
           <div *ngFor = "let dato of Separar" >
             <br>
           </div>
-          <h4 class=".font fontSizeContent">Ultimas noticias...</h4>
+          <h4 class=".font">Últimas noticias...</h4>
           <div *ngFor = "let dato of Separar" >
             <br>
           </div>
-          <h4 class=".font fontSizeContent">Notificaciones...</h4>
+          <h4 class=".font">Notificaciones...</h4>
         </div>
-
       </div>
 
 
       <!--/body de Home  -->
-
+      <!-- menuCNB -->
+      <app-menu-cnb *ngIf = menuCNB></app-menu-cnb>
     </div>
     <!-- /Menu superor -->
   </div>
