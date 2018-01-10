@@ -41,7 +41,7 @@
     <label for="menu-switch" id="menuToggle" >
       <i class="fas fa-bars"></i>
     </label>
-    <!-- Menu superor -->
+    <!-- #region Menu superor -->
     <div class="main-content" role="main">
       <nav class="navbar navbar-default navbar-fixed-top">
         <!-- Menu en reponsive -->
@@ -66,38 +66,53 @@
             <img src="assets/img/logo.svg" class="logo" (click)="mostrarMain('home')" style="cursor: pointer">
           </div>
 
-          <!-- inicio de menuCNB -->
-          <ul class="nav navbar-nav" *ngIf = menuCNB>            
-            <li>
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="mainCNB">CNB
+         <!-- #region inicio de menuCNB -->
+          <ul class="nav navbar-nav" *ngIf = menuCNB>      
+            <!-- #region  Primer nivel del menu Corresponsal no Bancario -->      
+            <li>              
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="mainCNB">Corresponsal no Bancario
                 <b class="caret"></b>
               </a>
+                          
               <ul class="dropdown-menu multi-level">
-                <li>
-                  <a href="#" id="newCNB">Crear corresponsal</a>
-                </li>
-                <li>
-                  <a href="#" id="queryCNB">Consultar corresponsal</a>
-                </li>
-                <li>
-                  <a href="#" id="updateCNB">Actualizar corresponsal</a>
-                </li>
-                <li class="dropdown-submenu">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="createPointCNB">Creación de puntos</a>
+                <!-- #region Tercer nivel del menu Corresponsal-->
+                <li class="dropdown-submenu">                  
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="createPointCNB">Corresponsal</a>                   
                   <ul class="dropdown-menu third-level">
                     <li>
-                      <a href="#" id="newPointCNB">Crear puntos</a>
+                      <a href="#" id="newPointCNB">Crear Corresponsal</a>
                     </li>
                     <li>
-                      <a href="#" id="updatePointCNB">Actualizar puntos</a>
+                      <a href="#" id="updatePointCNB">Actualizar Corresponsal</a>
                     </li>
                     <li>
-                      <a href="#" id="queryPointCNB">Consultar puntos</a>
+                      <a href="#" id="queryPointCNB">Consultar Corresponsal</a>
                     </li>
-                  </ul>
+                  </ul>                  
                 </li>
-              </ul>
+                <!-- #endregion  /Tercer nivel del menu Corresponsal -->
+                <!-- #region Tercer nivel del menu  Puntos-->
+                <li class="dropdown-submenu">
+                  
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="createPointCNB">Puntos</a>
+                  
+                  <ul class="dropdown-menu third-level">
+                    <li>
+                      <a href="#" id="newPointCNB">Crear Puntos</a>
+                    </li>
+                    <li>
+                      <a href="#" id="updatePointCNB">Actualizar Puntos</a>
+                    </li>
+                    <li>
+                      <a href="#" id="queryPointCNB">Consultar Puntos</a>
+                    </li>
+                  </ul>                  
+                </li>
+                <!-- #endregion Tercer nivel del Puntos -->
+              </ul>              
             </li>
+            <!-- #endregion Primer nivel del menu Corresponsal no Bancario -->
+            <!-- #region Primer nivel del menu Financiera-->
             <li>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="mainFinancialCNB">Financieras
                 <b class="caret"></b>
@@ -111,6 +126,8 @@
                 </li>
               </ul>
             </li>
+            <!-- #endregion Primer nivel del menu Financiera-->
+            <!-- #region Primer nivel del menu Usuarios-->
             <li>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="mainAdminUserCNB">Administración de usuarios
                 <b class="caret"></b>
@@ -127,15 +144,18 @@
                 </li>
               </ul>
             </li>
+            <!-- #endregion Primer nivel del menu Usuarios-->
+            <!-- #region Primer nivel del menu Reportes-->
             <li>
               <a href="#" id="mainReportsCNB">Reportes</a>
             </li>
+            <!-- #endregion nivel del menu Reportes-->
           </ul>
-          <!-- /inicio de menuCNB -->
+          <!-- #endregion /inicio de menuCNB -->
         </div>
       </nav>      
 
-      <!-- body de Home  -->
+      <!-- #region body de Home  -->
       <div class="custom-content" *ngIf = home>
         <div class="title-module">
           <!-- <img src="assets/img/logo.svg" class="logo-home"> -->
@@ -154,12 +174,11 @@
           <h4 class=".font">Notificaciones...</h4>
         </div>
       </div>
-
-
-      <!--/body de Home  -->
+      <!-- #endregion /body de Home  -->
+      
       <!-- menuCNB -->
       <app-menu-cnb *ngIf = menuCNB></app-menu-cnb>
     </div>
-    <!-- /Menu superor -->
+    <!-- #endregion /Menu superor -->
   </div>
 </div>
