@@ -164,10 +164,15 @@ $colorWhite: #ffffff;
     transition: background-image 0.5s;
     background-image: url('/assets/img/fondoBotonAmarillo.png');
     color: $blueColor;
+    outline: none;
 }
 
 #btn-login{
     display:none;
+}
+
+.errorText{
+    color:#a94442;
 }
 
 //Estilo para el componente de error

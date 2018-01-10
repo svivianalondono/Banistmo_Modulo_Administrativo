@@ -34,21 +34,17 @@ $redColor: #ED1B2D;
   .icon-cross:before {
     content: "\ea0f";
   }
-  
-  .icon-cross{
-
-  }
 
 //Estios para el componente de error del módulo administrativo
 .textError{
     margin-left: 20px;
-    padding-top: 10px;
+    padding: 5px;
 }
 
 .iconError{
-    font-size: 15px;
-    margin: 2px;
-    
+    font-size: 42px;
+    margin-left: -20px;
+    margin-right: 11px;  
 }
     
 .BarraError{
@@ -89,5 +85,9 @@ $redColor: #ED1B2D;
     }
     .iconError{
         font-size: 45px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-right: 10px;
+        margin-left: -10px;
     }        
 }

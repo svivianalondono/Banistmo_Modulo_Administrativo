@@ -30,7 +30,7 @@ export class InterceptorProviderService implements HttpInterceptor {
     if (localStorage.getItem("access_token") == undefined)//Se verifica que el token exista en el localStorage
       auth = "Basic YmFuaXN0bW9BVE06Y25ic2VjcmV0QVRN";//Authorization requerido para acceder al microservicio de login. Por configuración de ws es éste por defecto.
     else
-      auth = "bearer " + localStorage.getItem("access_token");
+      auth = "Bearer " + localStorage.getItem("access_token");
     request = request.clone({ //Para sobreescribir el request
       setHeaders: {//Adicionamos los headers necesarios
         "Authorization": auth,
