@@ -2,6 +2,7 @@
 
 $colorSilver: #9FA1A4;
 $blueColor: #00448C;
+$yellowColor: #FFD200;
 
 .iconCabecera{
     height:100%;
@@ -70,9 +71,19 @@ $blueColor: #00448C;
 
 .fa-logout{
     color: $blueColor;
-    font-size: 40px
+    font-size: 40px;
+    cursor: pointer;
+    -webkit-transition: color 0.5s; 
+    transition: color 0.5s;
+
 }
 
+.fa-logout:hover,
+.fa-logout:focus{
+    color: $yellowColor;
+    -webkit-transition: color 0.5s; 
+    transition: color 0.5s;    
+}
 .titleForm{
     font-size: 15px;
     color: $blueColor;

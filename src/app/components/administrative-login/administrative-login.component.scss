@@ -141,7 +141,7 @@ $colorWhite: #ffffff;
 .btn-custom {
     border:none;
     color: $colorWhite;
-    background: url("/assets/img/fondoBoton.png");
+    background: url("/assets/img/botonAzul.svg");
     width: 100%;
     height: 67px;
     cursor: pointer;
@@ -163,7 +163,7 @@ $colorWhite: #ffffff;
     color:white;
     -webkit-transition: background-image 0.5s; 
     transition: background-image 0.5s;
-    background-image: url('/assets/img/fondoBotonAmarillo.png');
+    background-image: url('/assets/img/botonAmarillo.svg');
     color: $blueColor;
 }
 
