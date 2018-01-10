@@ -1,0 +1,102 @@
+@import "../home-administrativo/home-administrativo.component";
+
+$colorSilver: #9FA1A4;
+$blueColor: #00448C;
+
+.iconCabecera{
+    height:100%;
+    width:100%;
+    @media(min-width:412px){
+        height:90%;
+        width:90%;
+    };
+    
+    @media(min-width:720px){
+        height:70%;
+        width:70%;
+    };
+}
+
+.contentHeader{
+    padding-bottom:1em;
+    border-bottom: solid 1.5px;
+    color:$blueColor;
+    padding-top: 5%; 
+}
+
+.marged{
+    
+    width: 103%;
+    margin-left: -5px;
+
+
+    @media(min-width:720px){
+        width: 99%;
+    };
+
+    @media(min-width:1000px){
+        width: 100%;
+    };
+
+}
+
+.textHeader{
+    font-size: 15px;
+    color:$colorSilver;
+    text-align: left;
+    margin-bottom: 0;
+    margin-top: 10px;
+    margin-left: -10px;
+
+    @media(min-width:412px){
+        font-size: 18px;
+        margin-top: 20px;
+        margin-left: -20px;
+    };
+    
+    @media(min-width:720px){
+        font-size: 37px;
+        margin-top: 12px;
+        margin-left: -51px;
+    };
+
+    @media(min-width:1000px){
+        font-size: 37px;
+        margin-top: 61px;
+        margin-left: -90px;
+    };
+}
+
+
+.fa-logout{
+    color: $blueColor;
+    font-size: 40px
+}
+
+.titleForm{
+    font-size: 15px;
+    color: $blueColor;
+    text-align: center;
+    font-weight: bold;    
+    margin-top: 10px;   
+    padding-top: 10%;    
+
+    @media(min-width:412px){
+        font-size: 18px;
+        margin-top: 20px;
+        
+    };
+    
+    @media(min-width:720px){
+        font-size: 37px;
+        margin-top: 12px;
+       
+    };
+
+    @media(min-width:1000px){
+        font-size: 37px;
+        margin-top: 61px;
+       
+    };
+}
+

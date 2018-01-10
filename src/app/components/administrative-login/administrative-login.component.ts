@@ -119,7 +119,7 @@ export class AdministrativeLoginComponent implements OnInit {
           switch (response.body["error"]) {
             case "invalid_authentication":
               this.error = true;
-              this.errorMessage = "El usurio o la contraseña no son correctos.";
+              this.errorMessage = "Usuario o contraseña incorrectos, por favor verifique";
               break;
             case "invalid_request":
               this.error = true;
