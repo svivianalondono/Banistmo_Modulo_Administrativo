@@ -9,19 +9,18 @@ import { AdministrativeLoginComponent } from './components/administrative-login/
 import { MenuCnbComponent } from './components/menu-cnb/menu-cnb.component';
 import { AdministrativeErrorComponent } from './components/administrative-error/administrative-error.component';
 import { AdministrativeLogoutComponent } from './components/administrative-logout/administrative-logout.component';
-
+import {LoginActivatorService} from './providers/login-activator/login-activator.service'
 
 const appRoutes: Routes = [
   { path: 'Login', component: AdministrativeLoginComponent },
-  { path: 'Home', component: HomeAdministrativoComponent },  
-  { path: 'Logout', component: AdministrativeLogoutComponent },  
+  { path: 'Home', component: HomeAdministrativoComponent, canActivate: [LoginActivatorService] },  
+  { path: 'Logout', component: AdministrativeLogoutComponent, canActivate: [LoginActivatorService]  },  
   { path: '**', redirectTo: 'Login', pathMatch: 'full' }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-
     HomeAdministrativoComponent,
     AdministrativeLoginComponent,
     MenuCnbComponent,
@@ -36,7 +35,7 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
-  providers: [],
+  providers: [LoginActivatorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
