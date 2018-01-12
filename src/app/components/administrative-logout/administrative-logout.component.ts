@@ -10,7 +10,8 @@ import { error } from 'selenium-webdriver';
 export class AdministrativeLogoutComponent implements OnInit {
 
 
-  private url = "http://ec2-18-217-145-174.us-east-2.compute.amazonaws.com:8080/logout"; //Url para realizar el consumo de logout 
+  // private url = "http://ec2-18-217-145-174.us-east-2.compute.amazonaws.com:8080/logout"; //Url para realizar el consumo de logout 
+  private url = "http://localhost:8080/logout"
   public message = ""; // msn para mostrar la respuesta del servicio
   constructor(
     private _Request : RequestHttpService
@@ -40,7 +41,7 @@ export class AdministrativeLogoutComponent implements OnInit {
       }
       
     },error=> {
-      this.message = "No hay conexion con el servidor.";
+      this.message = "No hay conexión con el servidor.";
       console.log("error en ts")
     });
 
