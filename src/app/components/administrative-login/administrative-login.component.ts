@@ -105,10 +105,10 @@ export class AdministrativeLoginComponent implements OnInit {
       .append("username", this.username)
       .append("password", this.password)
       .append("grant_type", "password");
+    let valid = false;
 
     this.loginProvider.requestHttpToServer("POST",urlLogin, body, params) //Llamado al método que hace la petición al micro servicio
       .subscribe(response => {
-        let valid = false;
         if (response.body["access_token"] != undefined) { //Si retorna el token de acceso
           valid = true;
           localStorage.setItem("access_token", response.body["access_token"]); //Se guarda el token en el localStorage
