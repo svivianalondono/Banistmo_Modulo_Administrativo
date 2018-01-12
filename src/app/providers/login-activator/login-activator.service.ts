@@ -16,7 +16,7 @@ export class LoginActivatorService {
     if (localStorage.getItem("access_token")===token) {      
       return true;      
     }else{   
-      alert ("La sesión no esta iniciada.")   
+      // alert ("La sesión no esta iniciada.")   
       this._router.navigate(['/Login']);
     }
     

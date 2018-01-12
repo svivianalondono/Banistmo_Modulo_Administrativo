@@ -16,7 +16,7 @@ export class HomeAdministrativoComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log("estamos en home_________________");
+    
   }
 
   cerrarDiv(){
