@@ -155,7 +155,6 @@ $colorWhite: #ffffff;
     text-align-last: center;
     padding: 5px;
     margin-top: 40px;
-    padding-top: 19px;
     font-size: 19px;
 }
 .btn-custom:hover,
@@ -165,10 +164,15 @@ $colorWhite: #ffffff;
     transition: background-image 0.5s;
     background-image: url('/assets/img/botonAmarillo.svg');
     color: $blueColor;
+    outline: none;
 }
 
 #btn-login{
     display:none;
+}
+
+.errorText{
+    color:#a94442;
 }
 
 //Estilo para el componente de error
@@ -179,6 +183,9 @@ $colorWhite: #ffffff;
 //Estilos para el footer del login
 #footer {
     color: $colorSilver;
-    font-size: 12px;
+    font-size: 14px;
     text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }

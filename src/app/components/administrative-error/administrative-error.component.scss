@@ -30,10 +30,18 @@ $colorBack: rgb(249, 223,226);
   
 .icon-cross:before {
     content: "\ea0f";
+  }
+
+//Estios para el componente de error del módulo administrativo
+.textError{
+    margin-left: 20px;
+    padding: 5px;
 }
 
 .iconError{
     font-size: 42px;
+    margin-left: -20px;
+    margin-right: 11px;  
 }
 
 .BarraError{
@@ -69,8 +77,10 @@ $colorBack: rgb(249, 223,226);
     }
 
     .iconError{
-        font-size: 30px;
-        margin-right: 15px;
-        line-height: 42px;
+        font-size: 45px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-right: 10px;
+        margin-left: -10px;
     }        
 }

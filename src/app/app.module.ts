@@ -1,20 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoginProviderService } from './providers/login-provider/login-provider.service';//Importación del provider de login
+import { InterceptorProviderService } from './providers/interceptor-provider/interceptor-provider.service';//Importación del interceptor
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-
-import { HomeAdministrativoComponent } from './components/home-administrativo/home-administrativo.component';
 import { AdministrativeLoginComponent } from './components/administrative-login/administrative-login.component';
-import { MenuCnbComponent } from './components/menu-cnb/menu-cnb.component';
 import { AdministrativeErrorComponent } from './components/administrative-error/administrative-error.component';
 import { AdministrativeLogoutComponent } from './components/administrative-logout/administrative-logout.component';
 import {LoginActivatorService} from './providers/login-activator/login-activator.service'
-import { InterceptorProviderService } from './providers/interceptor-provider/interceptor-provider.service';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'; 
 import { RequestHttpService } from './providers/request-http/request-http.service';
+import { APP_BASE_HREF } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { HomeAdministrativoComponent } from './components/home-administrativo/home-administrativo.component';
 
-const appRoutes: Routes = [
+const routes: Routes = [
   { path: 'Login', component: AdministrativeLoginComponent },
   { path: 'Home', component: HomeAdministrativoComponent, canActivate: [LoginActivatorService] },  
   { path: 'Logout', component: AdministrativeLogoutComponent, canActivate: [LoginActivatorService]  },  
@@ -26,18 +27,18 @@ const appRoutes: Routes = [
     AppComponent,
     HomeAdministrativoComponent,
     AdministrativeLoginComponent,
-    MenuCnbComponent,
-    AdministrativeErrorComponent,    
-    AdministrativeLogoutComponent
-
+    AdministrativeErrorComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(
-      appRoutes,
+      routes,
       { enableTracing: true } // <-- debugging purposes only
-    )
+    ),
+    HttpClientModule,
+    FormsModule
+    
   ],
   providers: [
     LoginActivatorService,
