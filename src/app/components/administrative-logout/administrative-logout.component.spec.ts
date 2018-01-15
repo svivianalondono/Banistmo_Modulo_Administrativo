@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 
-fdescribe('AdministrativeLogoutComponent', () => {
+describe('AdministrativeLogoutComponent', () => {
   let component: AdministrativeLogoutComponent;
   let fixture: ComponentFixture<AdministrativeLogoutComponent>;
   let service:RequestHttpService;
@@ -53,6 +53,23 @@ fdescribe('AdministrativeLogoutComponent', () => {
     let resJson = {
       body:{
       "message": "access_token borrado "  
+      }
+    }
+		spy = spyOn(service, 'requestHttpToServer').and.returnValue(Observable.of(resJson));
+		component.ngOnInit();
+
+		fixture.detectChanges();
+
+		fixture.whenStable().then((response) => {
+			expect(JSON.stringify(response.body.message)).toBe(JSON.stringify(resJson.body.message));
+		});
+  });
+
+  it('should map documentsError', () => {
+
+    let resJson = {
+      body:{
+      "message": "access_token borradow "  
       }
     }
 		spy = spyOn(service, 'requestHttpToServer').and.returnValue(Observable.of(resJson));
