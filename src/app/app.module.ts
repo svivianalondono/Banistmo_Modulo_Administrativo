@@ -18,7 +18,7 @@ import { RequestHttpService } from './providers/request-http/request-http.servic
 
 const routes: Routes = [
   { path: 'Login', component: AdministrativeLoginComponent },
-  { path: 'Home', component: HomeAdministrativoComponent},  
+  { path: 'Home', component: HomeAdministrativoComponent, canActivate: [LoginActivatorService] },  
   { path: 'Logout', component: AdministrativeLogoutComponent, canActivate: [LoginActivatorService]  },  
   { path: '**', redirectTo: 'Login', pathMatch: 'full' }
 ];
