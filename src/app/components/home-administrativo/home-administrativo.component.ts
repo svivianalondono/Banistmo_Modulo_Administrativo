@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MenuCnbComponent} from '../menu-cnb/menu-cnb.component';
 
 @Component({
   selector: 'app-home-administrativo',

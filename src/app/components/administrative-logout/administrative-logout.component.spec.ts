@@ -33,22 +33,8 @@ describe('AdministrativeLogoutComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should map documents', () => {
-
-    let resJson = {
-      "message": "access_token borrado "  
-    }
-		spy = spyOn(service, 'requestHttpToServer').and.returnValue(Observable.of(resJson));
-		component.ngOnInit();
-
-		fixture.detectChanges();
-
-		fixture.whenStable().then((response) => {
-			expect(JSON.stringify(response)).toBe(JSON.stringify(resJson));
-		});
-  });
   
-  it('should map documentsError', () => {
+  it('should close the session ', () => {
 
     let resJson = {
       body:{
@@ -65,7 +51,7 @@ describe('AdministrativeLogoutComponent', () => {
 		});
   });
 
-  it('should map documentsError', () => {
+  it('should not close the session', () => {
 
     let resJson = {
       body:{
@@ -82,22 +68,13 @@ describe('AdministrativeLogoutComponent', () => {
 		});
   });
   
-  it('should map documentsoOffline', () => {
-
-    let resJson = {
-      body:{
-      "message": "33access_token borrado "  
-      }
-    }
-		spy = spyOn(service, 'requestHttpToServer').and.returnValue(Observable.throw(resJson));
-		component.ngOnInit();
-
-		fixture.detectChanges();
-
-		fixture.whenStable().then((response) => {
-			expect(JSON.stringify(response.body.message)).toBe(JSON.stringify(resJson.body.message));
-		});
-	});
-
+  let errorMessage = { "error": "message" };
+  it('should be a conection error', () => {
+    spy = spyOn(service, 'requestHttpToServer').and.returnValue(Observable.throw(errorMessage));
+    component.ngOnInit();
+    fixture.whenStable().catch((error) => {
+      expect(error).toBe(errorMessage);
+    });
+  });
   
 });

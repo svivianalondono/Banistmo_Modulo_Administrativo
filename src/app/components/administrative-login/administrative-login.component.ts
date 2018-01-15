@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { LoginProviderService } from '../../providers/login-provider/login-provider.service';
+import { RequestHttpService } from '../../providers/request-http/request-http.service';
 import { HttpParams } from '@angular/common/http';
 
 /**
@@ -32,7 +32,7 @@ export class AdministrativeLoginComponent implements OnInit {
    */
   constructor(private route: ActivatedRoute,
     private router: Router,
-    private loginProvider: LoginProviderService) { }
+    private loginProvider: RequestHttpService) { }
 
   /**
    * Método ngOnInit, se ejecuta inmediatamente después de creado el componente

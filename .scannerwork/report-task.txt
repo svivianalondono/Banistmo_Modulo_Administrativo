@@ -2,5 +2,5 @@ projectKey=juan
 serverUrl=http://192.168.3.140:9000
 serverVersion=6.7.1.35068
 dashboardUrl=http://192.168.3.140:9000/dashboard/index/juan
-ceTaskId=AWD6uRokD0hezWhnz_Ha
-ceTaskUrl=http://192.168.3.140:9000/api/ce/task?id=AWD6uRokD0hezWhnz_Ha
+ceTaskId=AWD7osKzD0hezWhnz_He
+ceTaskUrl=http://192.168.3.140:9000/api/ce/task?id=AWD7osKzD0hezWhnz_He

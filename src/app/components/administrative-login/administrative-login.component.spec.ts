@@ -3,15 +3,15 @@ import { FormsModule } from '@angular/forms';
 import { AdministrativeLoginComponent } from './administrative-login.component';
 import { AdministrativeErrorComponent } from '../administrative-error/administrative-error.component';
 import { Router, ActivatedRoute } from '@angular/router';
-import { LoginProviderService } from '../../providers/login-provider/login-provider.service';
+import { RequestHttpService } from '../../providers/request-http/request-http.service';
 import { HttpClient, HttpHandler, } from '@angular/common/http';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-fdescribe('AdministrativeLoginComponentTest', () => {
+describe('AdministrativeLoginComponentTest', () => {
   let component: AdministrativeLoginComponent;
   let fixture: ComponentFixture<AdministrativeLoginComponent>;
-  let client: LoginProviderService;
+  let client: RequestHttpService;
   let spy: jasmine.Spy;
 
   /**
@@ -30,7 +30,7 @@ fdescribe('AdministrativeLoginComponentTest', () => {
       {
         provide: Router,
         useClass: class { navigate = jasmine.createSpy("navigate"); }
-      }, LoginProviderService]
+        }, RequestHttpService]
     })
       .compileComponents();
   }));
@@ -38,7 +38,7 @@ fdescribe('AdministrativeLoginComponentTest', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AdministrativeLoginComponent);
     component = fixture.componentInstance;
-    client = fixture.debugElement.injector.get(LoginProviderService);
+    client = fixture.debugElement.injector.get(RequestHttpService);
 
     fixture.detectChanges();
   });
