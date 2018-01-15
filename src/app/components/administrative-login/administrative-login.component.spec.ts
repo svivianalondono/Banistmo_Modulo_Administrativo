@@ -6,12 +6,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { LoginProviderService } from '../../providers/login-provider/login-provider.service';
 import { HttpClient, HttpHandler, } from '@angular/common/http';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 
 fdescribe('AdministrativeLoginComponentTest', () => {
   let component: AdministrativeLoginComponent;
   let fixture: ComponentFixture<AdministrativeLoginComponent>;
-  let client: LoginProviderService; 
+  let client: LoginProviderService;
   let spy: jasmine.Spy;
 
   /**
@@ -24,15 +24,15 @@ fdescribe('AdministrativeLoginComponentTest', () => {
   //???
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, HttpClientModule],
-      declarations: [ AdministrativeLoginComponent, AdministrativeErrorComponent ],
-      providers:[ {provide: ActivatedRoute, useValue: fakeActivatedRoute},
-        { 
-          provide: Router, 
-          useClass: class { navigate = jasmine.createSpy("navigate");}
-        }, LoginProviderService ]
+      imports: [FormsModule, HttpClientModule],
+      declarations: [AdministrativeLoginComponent, AdministrativeErrorComponent],
+      providers: [{ provide: ActivatedRoute, useValue: fakeActivatedRoute },
+      {
+        provide: Router,
+        useClass: class { navigate = jasmine.createSpy("navigate"); }
+      }, LoginProviderService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -107,8 +107,8 @@ fdescribe('AdministrativeLoginComponentTest', () => {
   /**
    * Test para probar la función clear
    */
-  it ('should clear', () =>{
-    component.errorUsername ="Hide error";
+  it('should clear', () => {
+    component.errorUsername = "Hide error";
     component.clear();
     expect(component.errorUsername).toBe("");
   });
@@ -117,64 +117,76 @@ fdescribe('AdministrativeLoginComponentTest', () => {
    * Test para probar la función handleRequest cuando retorna el token correctamente
    */
   let JSONResponse;
-    it('should get the token',() =>{
-      JSONResponse = {body: {"access_token": "TokenCode"}};
-      component.username = "Esteban";
-      component.password ="1234";
-      spy = spyOn(client, 'requestHttpToServer').and.returnValue(Observable.of(JSONResponse));
-      component.handleRequest(JSONResponse);
-      fixture.whenStable().then((response:boolean) => {
-        expect((localStorage.getItem("access_token"))).toBe("TokenCode");
-      });
+  it('should get the token', () => {
+    JSONResponse = { body: { "access_token": "TokenCode" } };
+    component.username = "Esteban";
+    component.password = "1234";
+    spy = spyOn(client, 'requestHttpToServer').and.returnValue(Observable.of(JSONResponse));
+    component.handleRequest(JSONResponse);
+    fixture.whenStable().then((response: boolean) => {
+      expect((localStorage.getItem("access_token"))).toBe("TokenCode");
     });
+  });
+
+  /**
+  * Test para probar la función handleRequest cuando retorna el token correctamente
+  */
+  it('should not get the token', () => {
+    JSONResponse = { body: { "local": "TokenCode" } };
+    component.username = "Esteban";
+    component.password = "1234";
+    spy = spyOn(client, 'requestHttpToServer').and.returnValue(Observable.of(JSONResponse));
+    component.handleRequest(JSONResponse);
+    fixture.whenStable().then((response: boolean) => {
+      expect((localStorage.getItem("access_token"))).toBe("TokenCode");
+    });
+  });
+
+  /**
+  * Test para probar la función handleRequest cuando existen múltiples sesiones para un mismo usuario
+  */
+  let JSONError;
+  it('should get throw error', () => {
+    JSONError = { error: { error: "unauthorized_client", error_description: "Multiple session not allowed." } };
+    component.username = "Esteban";
+    component.password = "1234";
+    spy = spyOn(client, 'requestHttpToServer').and.returnValue(Observable.throw(JSONError));
+    component.login();
+    fixture.whenStable().catch((response) => {
+      expect(response).toBe(JSONError);
+    });
+  });
+
+  /**
+  * Test para probar la función handleRequest cuando se presenta un error
+  */
+  it('should get throw error with default', () => {
+    JSONError = { error: { error: "unauthorized_client2", error_description: "Multiple session not allowed." } };
+    component.username = "Esteban";
+    component.password = "1234";
+    spy = spyOn(client, 'requestHttpToServer').and.returnValue(Observable.throw(JSONError));
+    component.login();
+    fixture.whenStable().catch((response) => {
+      expect(response).toBe(JSONError);
+    });
+  });
+
+  /**
+   * Método para probar la función login
+   */
+  it('should return early', () => {
+    component.login();
+  });
   
-    /**
-    * Test para probar la función handleRequest cuando retorna el token correctamente
-    */
-    it('should not get the token',() =>{
-      JSONResponse = {body: {"local": "TokenCode"}};
-      component.username = "Esteban";
-      component.password ="1234";
-      spy = spyOn(client, 'requestHttpToServer').and.returnValue(Observable.of(JSONResponse));
-      component.handleRequest(JSONResponse);
-      fixture.whenStable().then((response:boolean) => {
-        expect((localStorage.getItem("access_token"))).toBe("TokenCode");
-      });
-    });
-    
-    /**
-    * Test para probar la función handleRequest cuando existen múltiples sesiones para un mismo usuario
-    */
-    let JSONError;
-    it('should get throw error',() =>{
-      JSONError={error: {error:"unauthorized_client",error_description:"Multiple session not allowed."}};
-      component.username = "Esteban";
-      component.password ="1234";
-      spy = spyOn(client, 'requestHttpToServer').and.returnValue(Observable.throw(JSONError));
-      component.login();
-      fixture.whenStable().catch((response) => {
-        expect(response).toBe(JSONError);
-      });
-    });
+  it('should validate a correct username without special characters', () => {
+    expect(component.isAlphanumeric("diego")).toBeTruthy();
+  });
 
-    /**
-    * Test para probar la función handleRequest cuando se presenta un error
-    */
-    it('should get throw error with default',() =>{
-      JSONError={error: {error:"unauthorized_client2",error_description:"Multiple session not allowed."}};
-      component.username = "Esteban";
-      component.password ="1234";
-      spy = spyOn(client, 'requestHttpToServer').and.returnValue(Observable.throw(JSONError));
-      component.login();
-      fixture.whenStable().catch((response) => {
-        expect(response).toBe(JSONError);
-      });
-    });
+  it('should validate a correct username with special characters', () => {
+    component.username = "diego*";
+    component.validateForm();
+    expect(component.errorUsername).toBe("No se aceptan caracteres especiales");
+  });
 
-    /**
-     * Método para probar la función login
-     */
-    it('should return early',() =>{
-      component.login();
-    });
+
 });

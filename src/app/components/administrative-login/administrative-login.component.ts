@@ -64,22 +64,24 @@ export class AdministrativeLoginComponent implements OnInit {
   /**
    * Método para validar los campos del formulario
    */
-  validateForm(){
-    this.usernameError = this.isEmpty(this.username);
+
+  validateForm() {
+    this.usernameError = this.isEmpty(this.username) || !this.isAlphanumeric(this.username);
     this.passwordError = this.isEmpty(this.password);
- 
+
     if (this.usernameError) {
       this.errorUsername = "Este campo es requerido";
+      if (!this.isAlphanumeric(this.username))
+        this.errorUsername = "No se aceptan caracteres especiales";
       this.inputDivUsername.className = "has-error";
     }
     if (this.passwordError) {
       this.errorPassword = "Este campo es requerido";
       this.inputDivPassword.className = "has-error";
     }
-    
-    return this.usernameError || this.passwordError; 
-  }
 
+    return this.usernameError || this.passwordError;
+  }
   //Los siguientes métodos se utilizan para realizar la petición al microservicio de login
 
   /**
@@ -107,6 +109,12 @@ export class AdministrativeLoginComponent implements OnInit {
         break;
     }
   }
+
+
+  isAlphanumeric(text: string) {
+    return /^[a-zA-Z0-9]*$/.test(text);
+  }
+
 
 
   /**
