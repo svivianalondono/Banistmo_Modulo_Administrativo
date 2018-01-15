@@ -21,15 +21,8 @@ export class AdministrativeLoginComponent implements OnInit {
   errorMessage: string; //Variable para almacenar el mensaje de error
   usernameError: boolean = false; //Variable para almacenar el mensaje de error que valida username como campo obligatorio
   passwordError: boolean = false; //Variable para almacenar el mensaje de error que valida password como campo obligatorio
-  //variables para mostrar error en las clases
-  classUsername; classPassword;
-
-  //variables para mostrar error al validar campos vacíos
-  errorUsername: string; errorPassword: string;
-
-
+  errorUsername: string; errorPassword: string;//variables para mostrar error al validar campos vacíos
   inputDivUsername; inputDivPassword; //Variables para guardar los div desde el html
-  divClass:string = "col-xs-12 col-sm-8 col-md-6 col-lg-4 col-sm-offset-2 col-md-offset-3 col-lg-offset-4"; //Conservar la clase del div
   
 
   testName;
@@ -63,9 +56,104 @@ export class AdministrativeLoginComponent implements OnInit {
   clear(){
     this.errorUsername = "";
     this.errorPassword = "";
-    this.inputDivUsername.className = this.divClass;
-    this.inputDivPassword.className = this.divClass;
+    this.inputDivUsername.className = "";
+    this.inputDivPassword.className = "";
     this.error = false;
+  }
+
+  /**
+   * Método para validar los campos del formulario
+   */
+  validateForm(){
+    this.usernameError = this.isEmpty(this.username);
+    this.passwordError = this.isEmpty(this.password);
+ 
+    if (this.usernameError) {
+      this.errorUsername = "Este campo es requerido";
+      this.inputDivUsername.className = "has-error";
+    }
+    if (this.passwordError) {
+      this.errorPassword = "Este campo es requerido";
+      this.inputDivPassword.className = "has-error";
+    }
+    
+    return this.usernameError || this.passwordError; 
+  }
+
+  //Los siguientes métodos se utilizan para realizar la petición al microservicio de login
+
+  /**
+   * Método para mostrar el error, si se presenta alguno al loguearse
+   * Si el servicio responde con status 200, pero hubo error en la petición se configura el mensaje de error de acuerdo al retorno del ws
+   * @param error 
+   */
+  showErrorService(error) { //Se validan todos los errores.
+    switch (error) {
+      case "invalid_authentication":
+        this.error = true;
+        this.errorMessage = "Usuario o contraseña incorrectos, por favor verifique";
+        break;
+      case "invalid_request":
+        this.error = true;
+        this.errorMessage = "Solicitud no válida";
+        break;
+      case "invalid_client":
+        this.error = true;
+        this.errorMessage = "El cliente no es válido";
+        break;
+      default:
+        this.error = true;
+        this.errorMessage = "Ha ocurrido un error desconocido";
+        break;
+    }
+  }
+
+
+  /**
+   * Método para mostrar error en la petición de login
+   * Se ejecuta cuando hay errores de multiples sesiones, o error con la comunicación al microservicio
+   * @param error 
+   */
+  showOtherErrorService(error) {
+    switch (error.error["error"]) {
+      case "unauthorized_client":
+        this.error = true;
+        if (error.error["error_description"].includes("Multiple session not allowed.")) {
+          this.errorMessage = "El inicio de sesión no fue exitoso\nMúltiples sesiones activas no permitidas."
+          //alert("El inicio de sesion no fue exitoso\nmúltiples sesiones activas no permitidas");
+        }
+        break;
+      default:
+        this.error = true;
+        this.errorMessage = "Error al solicitar el token";
+        //alert("Error al solicitar el token");
+        break;
+    }
+  }
+
+  /**
+   * Método para crear los parámetros que se enviarán en la petición
+   */
+  createLoginParams() {
+    return new HttpParams() //Parámetros adicionales a enviar en la petición.
+    .append("client_id", "banistmoCO")
+    .append("username", this.username)
+    .append("password", this.password)
+    .append("grant_type", "password");
+  }
+
+  /**
+   * Método para el manejo de la respuesta del ws
+   * @param response 
+   */
+  handleRequest (response){
+    if (response.body["access_token"] != undefined) { //Si retorna el token de acceso
+      localStorage.setItem("access_token", response.body["access_token"]); //Se guarda el token en el localStorage
+      this.router.navigate(['/Home']);//Se enruta al home transaccional
+    }
+    else { //Mostrar el error de acuerdo a la respuesta
+      this.showErrorService(response.body["error"]);
+    }
   }
 
   /**
@@ -74,88 +162,20 @@ export class AdministrativeLoginComponent implements OnInit {
   login() {
 
     //Se verifica si el campo está vacio
-    this.usernameError = this.isEmpty(this.username);
-    this.passwordError = this.isEmpty(this.password);
-
-    if (this.usernameError) {
-      if (this.passwordError) {
-        this.errorUsername = "Por favor verifique los datos ingresados.";
-        this.inputDivUsername.className = this.divClass + " has-error";
-        this.errorPassword = "Por favor verifique los datos ingresados.";
-        this.inputDivPassword.className = this.divClass + " has-error";
-        return;
-      }else{
-        this.errorUsername = "Por favor verifique los datos ingresados.";
-        this.inputDivUsername.className = this.divClass + " has-error";
-        return;
-      } 
-    }else{
-      if (this.passwordError) {
-        this.errorPassword = "Por favor verifique los datos ingresados.";
-        this.inputDivPassword.className = this.divClass + " has-error";
-        return;
-      }
+    if (this.validateForm()){
+      return; 
     }
-
     
-    let urlLogin = "http://ec2-18-217-145-174.us-east-2.compute.amazonaws.com:9001/loginStage/login";//Url a la cual se le realizará la petición     
+    let urlLogin ="https://0v7brt9d84.execute-api.us-west-2.amazonaws.com/loginStage/authentication/login"
+    //let urlLogin = "http://ec2-18-217-145-174.us-east-2.compute.amazonaws.com:9001/loginStage/login";//Url a la cual se le realizará la petición     
     let body: JSON; //Variable para guardar el cuerpo que se enviará en la peticion.
-    let params = new HttpParams() //Parámetros adicionales a enviar en la petición.
-      .append("client_id", "banistmoATM")
-      .append("username", this.username)
-      .append("password", this.password)
-      .append("grant_type", "password");
-    let valid = false;
-
-    this.loginProvider.requestHttpToServer("POST",urlLogin, body, params) //Llamado al método que hace la petición al micro servicio
-      .subscribe(response => {
-        if (response.body["access_token"] != undefined) { //Si retorna el token de acceso
-          valid = true;
-          localStorage.setItem("access_token", response.body["access_token"]); //Se guarda el token en el localStorage
-          this.router.navigate(['/Home']);//Se enruta al home administrativo
-        }
-        else { //Bloque de código que se ejecuta en caso de que no retorne el token. Se validan todos los errores.
-          //Si el servicio responde con status 200, pero hubo error en la peticion se configura el mensaje de erro de acuerdo al retorno del ws
-          switch (response.body["error"]) {
-            case "invalid_authentication":
-              this.error = true;
-              this.errorMessage = "Usuario o contraseña incorrectos, por favor verifique";
-              break;
-            case "invalid_request":
-              this.error = true;
-              this.errorMessage = "invalid_request";
-              break;
-            case "invalid_client":
-              this.error = true;
-              this.errorMessage = "invalid_client";
-              break;
-            default:
-              this.error = true;
-              this.errorMessage = "Ha ocurrido un error desconocido";
-              alert("Unknown error");
-              break;
-            }
-          }
-      },
+    let params = this.createLoginParams();
+    
+    this.loginProvider.requestHttpToServer("POST", urlLogin, body, params) //Llamado al método que hace la petición al microservicio
+      .subscribe(this.handleRequest,
       error => { //Bloque de código que se ejecuta en caso de que el servicio responda con un error
-        console.log(error.error)
-        switch (error.error["error"]) {
-          case "unauthorized_client":
-            this.error = true;
-            if (error.error["error_description"].includes("Multiple session not allowed.")) {
-              this.errorMessage = "El inicio de sesión no fue exitoso\nMúltiples sesiones activas no permitidas"
-              //alert("El inicio de sesion no fue exitoso\nmúltiples sesiones activas no permitidas");
-            }
-            break;
-          default:
-            this.error = true;
-            this.errorMessage = "Error al pedir el token";
-            //alert("Error al pedir el token");
-            break;
-        }
-      });  
+        this.showOtherErrorService(error);
+      });
   }
-
-
 
 }

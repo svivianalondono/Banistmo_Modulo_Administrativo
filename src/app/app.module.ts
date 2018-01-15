@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { AdministrativeLoginComponent } from './components/administrative-login/administrative-login.component';
 import { AdministrativeErrorComponent } from './components/administrative-error/administrative-error.component';
 import { APP_BASE_HREF } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: 'Login', component: AdministrativeLoginComponent },
@@ -29,6 +30,8 @@ const routes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     ),
     HttpClientModule,
+    FormsModule
+    
   ],
   providers: [
     LoginProviderService,

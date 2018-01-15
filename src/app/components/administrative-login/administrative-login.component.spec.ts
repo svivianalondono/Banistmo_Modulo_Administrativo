@@ -68,20 +68,113 @@ fdescribe('AdministrativeLoginComponentTest', () => {
     expect(component.isEmpty("diego")).toBeFalsy();
   });
 
-  let JSONResponse ={body: {"access_token": "MuyBien"}};
-  it('should get the token',() =>{
-    component.password ="1234";
-    component.username = "Hola";
-    spy = spyOn(client, 'requestHttpToServer').and.returnValue(Observable.of(JSONResponse));
-    component.login();
-    fixture.whenStable().then((response:boolean) => {
-      expect((localStorage.getItem("access_token"))).toBe("MuyBien");
-    });
+  /**
+   * Test para probar la función showErrorService cuando el usuario o contraseña son incorrectos
+   */
+  it('should validate incorrect username and password', () => {
+    component.showErrorService("invalid_authentication");
+    expect(component.error).toBeTruthy();
+    expect(component.errorMessage).toEqual("Usuario o contraseña incorrectos, por favor verifique");
   });
 
+  /**
+   * Test para probar la función showErrorService cuando la solicitud no es válida o hay error en los parámetros
+   */
+  it('should validate invalid request', () => {
+    component.showErrorService("invalid_request");
+    expect(component.error).toBeTruthy();
+    expect(component.errorMessage).toEqual("Solicitud no válida");
+  });
+
+  /**
+   * Test para probar la función showErrorService cuando el clien_id es incorrecto
+   */
+  it('should validate invalid client', () => {
+    component.showErrorService("invalid_client");
+    expect(component.error).toBeTruthy();
+    expect(component.errorMessage).toEqual("El cliente no es válido");
+  });
+
+  /**
+   * Test para probar la función showErrorService cuando se presenta un error desconocido
+   */
+  it('should validate other error', () => {
+    component.showErrorService("other error");
+    expect(component.error).toBeTruthy();
+    expect(component.errorMessage).toEqual("Ha ocurrido un error desconocido");
+  });
+
+  /**
+   * Test para probar la función clear
+   */
   it ('should clear', () =>{
-    component.errorUsername ="Hola";
+    component.errorUsername ="Hide error";
     component.clear();
     expect(component.errorUsername).toBe("");
-  })
+  });
+
+  /**
+   * Test para probar la función handleRequest cuando retorna el token correctamente
+   */
+  let JSONResponse;
+    it('should get the token',() =>{
+      JSONResponse = {body: {"access_token": "TokenCode"}};
+      component.username = "Esteban";
+      component.password ="1234";
+      spy = spyOn(client, 'requestHttpToServer').and.returnValue(Observable.of(JSONResponse));
+      component.handleRequest(JSONResponse);
+      fixture.whenStable().then((response:boolean) => {
+        expect((localStorage.getItem("access_token"))).toBe("TokenCode");
+      });
+    });
+  
+    /**
+    * Test para probar la función handleRequest cuando retorna el token correctamente
+    */
+    it('should not get the token',() =>{
+      JSONResponse = {body: {"local": "TokenCode"}};
+      component.username = "Esteban";
+      component.password ="1234";
+      spy = spyOn(client, 'requestHttpToServer').and.returnValue(Observable.of(JSONResponse));
+      component.handleRequest(JSONResponse);
+      fixture.whenStable().then((response:boolean) => {
+        expect((localStorage.getItem("access_token"))).toBe("TokenCode");
+      });
+    });
+    
+    /**
+    * Test para probar la función handleRequest cuando existen múltiples sesiones para un mismo usuario
+    */
+    let JSONError;
+    it('should get throw error',() =>{
+      JSONError={error: {error:"unauthorized_client",error_description:"Multiple session not allowed."}};
+      component.username = "Esteban";
+      component.password ="1234";
+      spy = spyOn(client, 'requestHttpToServer').and.returnValue(Observable.throw(JSONError));
+      component.login();
+      fixture.whenStable().catch((response) => {
+        expect(response).toBe(JSONError);
+      });
+    });
+
+    /**
+    * Test para probar la función handleRequest cuando se presenta un error
+    */
+    it('should get throw error with default',() =>{
+      JSONError={error: {error:"unauthorized_client2",error_description:"Multiple session not allowed."}};
+      component.username = "Esteban";
+      component.password ="1234";
+      spy = spyOn(client, 'requestHttpToServer').and.returnValue(Observable.throw(JSONError));
+      component.login();
+      fixture.whenStable().catch((response) => {
+        expect(response).toBe(JSONError);
+      });
+    });
+
+    /**
+     * Método para probar la función login
+     */
+    it('should return early',() =>{
+      component.login();
+    });
 });
